@@ -13,6 +13,7 @@
 			$this->load->model('pegawai_model');
 			$this->load->model('pendidikan_model');
 			$this->load->model('diklat_model');
+			$this->load->model('sertifikasi_model');
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
@@ -146,6 +147,16 @@
 				$d_inner_diklat['id_pegawai'] = $d['ID_Pegawai'];
 				
 				$d['content_inner_diklat'] = $this->load->view('diklat/view_inner', $d_inner_diklat, true);
+				
+				$d_inner_sertifikasi['title'] = $this->config->item('nama_aplikasi');
+				$d_inner_sertifikasi['judul_halaman'] = "Tabel Riwayat Sertifikasi Pegawai";
+				$d_inner_sertifikasi['breadcumb'] = "Pengolahan Riwayat Sertifikasi";
+				
+				$d_inner_sertifikasi['riwayat_sertifikasi'] = $this->sertifikasi_model->get_all_sertifikasi_pegawai($d['ID_Pegawai']);
+				
+				$d_inner_sertifikasi['id_pegawai'] = $d['ID_Pegawai'];
+				
+				$d['content_inner_sertifikasi'] = $this->load->view('sertifikasi/view_inner', $d_inner_sertifikasi, true);
 				
 				$d['content'] = $this->load->view('pegawai/form', $d, true);
 				

@@ -134,7 +134,7 @@
 								<?php echo($content_inner_diklat);?>
 							</div>
 							<div class="tab-pane" id="3">
-								<h3>add clearfix to tab-content (see the css)</h3>
+								<?php echo($content_inner_sertifikasi);?>
 							</div>
 						</div>
 					</div>
