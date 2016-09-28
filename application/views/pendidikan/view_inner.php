@@ -2,8 +2,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="panel panel-indigo">
-				<div class="panel-heading">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="inner_pendidikan">
 					<h4><?php echo $judul_halaman; ?></h4>
 				</div>
 				<div class="panel-body collapse in">
@@ -55,3 +55,8 @@
 		
 	</div> <!-- container -->
 	
+	<style type="text/css">
+		.panel-default > #inner_pendidikan.panel-heading {
+		background-color: green;
+		}
+	</style>	

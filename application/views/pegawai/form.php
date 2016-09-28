@@ -128,10 +128,10 @@
 						
 						<div class="tab-content ">
 							<div class="tab-pane active" id="1">
-								<?php echo($content_inner);?>
+								<?php echo($content_inner_pendidikan);?>
 							</div>
 							<div class="tab-pane" id="2">
-								<h3>Notice the gap between the content and tab after applying a background color</h3>
+								<?php echo($content_inner_diklat);?>
 							</div>
 							<div class="tab-pane" id="3">
 								<h3>add clearfix to tab-content (see the css)</h3>

@@ -12,6 +12,7 @@
 			parent::__construct();
 			$this->load->model('pegawai_model');
 			$this->load->model('pendidikan_model');
+			$this->load->model('diklat_model');
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
@@ -134,7 +135,17 @@
 				
 				$d_inner_pendidikan['id_pegawai'] = $d['ID_Pegawai'];
 				
-				$d['content_inner'] = $this->load->view('pendidikan/view_inner', $d_inner_pendidikan, true);
+				$d['content_inner_pendidikan'] = $this->load->view('pendidikan/view_inner', $d_inner_pendidikan, true);
+				
+				$d_inner_diklat['title'] = $this->config->item('nama_aplikasi');
+				$d_inner_diklat['judul_halaman'] = "Tabel Riwayat Diklat Pegawai";
+				$d_inner_diklat['breadcumb'] = "Pengolahan Riwayat Diklat";
+				
+				$d_inner_diklat['riwayat_diklat'] = $this->diklat_model->get_all_diklat_pegawai($d['ID_Pegawai']);
+				
+				$d_inner_diklat['id_pegawai'] = $d['ID_Pegawai'];
+				
+				$d['content_inner_diklat'] = $this->load->view('diklat/view_inner', $d_inner_diklat, true);
 				
 				$d['content'] = $this->load->view('pegawai/form', $d, true);
 				
