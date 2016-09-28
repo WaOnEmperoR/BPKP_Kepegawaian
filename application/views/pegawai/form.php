@@ -114,30 +114,33 @@
 						</div>
 					</form>
 					
-					<hr></hr>
-					<div id="exTabCop" class="container">	
-						<ul class="nav nav-tabs">
-							<li class="active">
-								<a  href="#1" data-toggle="tab">Pendidikan</a>
-							</li>
-							<li><a href="#2" data-toggle="tab">Diklat</a>
-							</li>
-							<li><a href="#3" data-toggle="tab">Sertifikasi</a>
-							</li>
-						</ul>
-						
-						<div class="tab-content ">
-							<div class="tab-pane active" id="1">
-								<?php echo($content_inner_pendidikan);?>
-							</div>
-							<div class="tab-pane" id="2">
-								<?php echo($content_inner_diklat);?>
-							</div>
-							<div class="tab-pane" id="3">
-								<?php echo($content_inner_sertifikasi);?>
+					<?php if($Action=='Ubah'){?>
+						<hr></hr>
+						<div id="exTabCop" class="container">	
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a  href="#1" data-toggle="tab">Pendidikan</a>
+								</li>
+								<li><a href="#2" data-toggle="tab">Diklat</a>
+								</li>
+								<li><a href="#3" data-toggle="tab">Sertifikasi</a>
+								</li>
+							</ul>
+							
+							<div class="tab-content ">
+								<div class="tab-pane active" id="1">
+									<?php echo($content_inner_pendidikan);?>
+								</div>
+								<div class="tab-pane" id="2">
+									<?php echo($content_inner_diklat);?>
+								</div>
+								<div class="tab-pane" id="3">
+									<?php echo($content_inner_sertifikasi);?>
+								</div>
 							</div>
 						</div>
-					</div>
+						
+					<?php } ?>
 				</div>
 				
 			</div>
@@ -148,6 +151,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('#example').DataTable();	
+		$('#example1').DataTable();
+		$('#example2').DataTable();
 		$('#tanggal_lahir').datepicker({ format: 'dd-mm-yyyy' });
 	});
 </script>

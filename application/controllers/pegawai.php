@@ -51,6 +51,7 @@
 				$d['Tempat_Lahir'] = '';
 				$d['Tanggal_Lahir'] = '';
 				$d['Agama'] = '';
+				$d['Action'] = 'Tambah';
 				
 				$d['content'] = $this->load->view('pegawai/form', $d, true);
 				
@@ -127,6 +128,8 @@
 					$d['Tanggal_Lahir'] = '';
 					$d['Agama'] = '';
 				}
+				
+				$d['Action'] = 'Ubah';
 				
 				$d_inner_pendidikan['title'] = $this->config->item('nama_aplikasi');
 				$d_inner_pendidikan['judul_halaman'] = "Tabel Riwayat Pendidikan Pegawai";

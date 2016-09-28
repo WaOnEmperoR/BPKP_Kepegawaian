@@ -47,9 +47,8 @@
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/easypiechart/jquery.easypiechart.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/sparklines/jquery.sparklines.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-toggle/toggle.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/demo/demo-datatables.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/datatables/jquery.dataTables.min.js'></script>
+<!--<script type='text/javascript' src='<?php echo base_url(); ?>assets/demo/demo-datatables.js'></script>-->
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/quicksearch/jquery.quicksearch.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
@@ -67,7 +66,8 @@
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/demo/demo.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.numeric.min.js'></script>
 <!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
-<!--<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>-->
+<!--<script type='text/javascript' src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.js'></script>
 
 
 
@@ -77,6 +77,7 @@
         //Date picker
         $(".datepicker").datepicker({format: 'yyyy-mm-dd'});
         $("input.numeric").numeric();
+		$('#example').DataTable();
     });
 </script>
 

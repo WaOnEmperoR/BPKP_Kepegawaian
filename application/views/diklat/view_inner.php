@@ -10,7 +10,7 @@
 					<div class="panel">
 						<a href="<?php echo base_url(); ?>diklat/tambah/<?php echo($id_pegawai);?>"> <button class="btn-primary btn"><i class="fa fa-plus"></i> Tambah</button></a>
 					</div>
-					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
+					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
 						<thead>
 							<tr>
 								<th>No</th>

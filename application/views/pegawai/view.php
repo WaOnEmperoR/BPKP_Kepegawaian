@@ -20,10 +20,21 @@
 							<div class="panel">
 								<a href="<?php echo base_url(); ?>pegawai/tambah"> <button class="btn-primary btn"><i class="fa fa-plus"></i> Tambah</button></a>
 							</div>
-							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
+							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 								<thead>
 									<tr>
-										<th>No</th>
+										<th rowspan="2">No</th>
+										<th>Nama pegawai</th>
+										<th>NIK</th>
+										<th>NIP</th>
+										<th>Tempat Lahir</th>
+										<th>Tanggal Lahir</th>
+										<th>Alamat</th>
+										<th>Jenis Kelamin</th>
+										<th>Agama</th>
+										<th>Aksi</th>
+									</tr>
+									<tr id="filterrow">
 										<th>Nama pegawai</th>
 										<th>NIK</th>
 										<th>NIP</th>
@@ -80,3 +91,33 @@
 			</div> <!-- container -->
 		</div> <!--wrap -->
 	</div> <!-- page-content -->
+	
+	
+	<script type="text/javascript">
+		// Setup - add a text input to each footer cell
+		$('#example thead tr#filterrow th').each( function () {
+			var title = $('#example thead th').eq( $(this).index() + 1).text();
+			$(this).html( '<input type="text" class="form-control" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+		} );
+		
+		
+		// DataTable
+		var table = $('#example').DataTable();
+		
+		
+		// Apply the filter
+		$("#example thead input").on( 'keyup change', function () {
+			table.column( ($(this).parent().index() + 1) +':visible' )
+            .search( this.value )
+            .draw();
+		} );
+		
+		function stopPropagation(evt) {
+			if (evt.stopPropagation !== undefined) {
+				evt.stopPropagation();
+				} else {
+				evt.cancelBubble = true;
+			}
+		}
+		
+	</script>				
