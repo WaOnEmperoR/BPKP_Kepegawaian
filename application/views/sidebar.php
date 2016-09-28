@@ -17,7 +17,7 @@
 				<li><a href="<?php echo base_url(); ?>pegawai"><i class="fa fa-check-square"></i> <span>Pegawai</span></a></li>
 				<li><a href="<?php echo base_url(); ?>tingkat_pendidikan"><i class="fa fa-building "></i> <span>Master Tingkat Pendidikan</span></a></li>
 				<li><a href="<?php echo base_url(); ?>jenis_diklat"><i class="fa fa-graduation-cap"></i> <span>Master Jenis Diklat</span></a></li>
-				<li><a href="<?php echo base_url(); ?>jalur"><i class="fa fa-sitemap"></i> <span>Data Jalur Seleksi</span></a></li>
+				<li><a href="<?php echo base_url(); ?>jenis_sertifikasi"><i class="fa fa-sitemap"></i> <span>Master Jenis Sertifikasi</span></a></li>
 				<li><a href="<?php echo base_url(); ?>sekolah"><i class="fa fa fa-university"></i> <span>Data Sekolah</span></a></li>
 				<li><a href="<?php echo base_url(); ?>pelajaran"><i class="fa fa-file-text"></i> <span>Data Mata Pelajaran</span></a></li>
 				<li><a href="<?php echo base_url(); ?>tahun"><i class="fa fa-calendar"></i> <span>Data Tahun Ajaran</span></a></li>
