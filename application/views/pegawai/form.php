@@ -125,6 +125,8 @@
 								</li>
 								<li><a href="#3" data-toggle="tab">Sertifikasi</a>
 								</li>
+								<li><a href="#4" data-toggle="tab">Pengalaman Lain</a>
+								</li>
 							</ul>
 							
 							<div class="tab-content ">
@@ -136,6 +138,9 @@
 								</div>
 								<div class="tab-pane" id="3">
 									<?php echo($content_inner_sertifikasi);?>
+								</div>
+								<div class="tab-pane" id="4">
+									<?php echo($content_inner_penugasan);?>
 								</div>
 							</div>
 						</div>
@@ -150,10 +155,11 @@
 </div> <!-- page-content -->
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#example').DataTable();	
-		$('#example1').DataTable();
-		$('#example2').DataTable();
-		$('#tanggal_lahir').datepicker({ format: 'dd-mm-yyyy' });
-	});
+$(document).ready(function(){
+$('#example').DataTable();	
+$('#example1').DataTable();
+$('#example2').DataTable();
+$('#example3').DataTable();
+$('#tanggal_lahir').datepicker({ format: 'dd-mm-yyyy' });
+});
 </script>
