@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Aplikasi Dinas Pendidikan">
 <meta name="author" content="iOTENTIK">
-<link href="<?php echo base_url(); ?>assets/img/favicon.png" rel="SHORTCUT ICON" />
+<link href="<?php echo base_url(); ?>assets/img/BPKP.png" rel="SHORTCUT ICON" />
 
 <!-- <link href="assets/less/styles.less" rel="stylesheet/less" media="all">  -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styles.css">
