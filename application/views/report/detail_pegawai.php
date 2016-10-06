@@ -179,6 +179,43 @@
 		</table>
 
 		<br pagebreak="true" />
+		
+		<h4 align="left" style="font-family:helvetica;">
+			DATA RIWAYAT PENUGASAN
+		</h4>
+		
+		<table cellpadding="0" cellspacing="0" border="1" id="example">
+			<thead>
+				<tr style="background-color:#424242;color:white;">
+					<th width="4%" class="kategori" align="center">No</th>
+					<th width="15%" class="kategori" align="center">Nama Penugasan</th>
+					<th width="23%" class="kategori" align="center">Objek Penugasan</th>
+					<th width="23%" class="kategori" align="center">Nama Jenis Penugasan</th>
+					<th width="20%" class="kategori" align="center">Nama Peran</th>
+					<th width="15%" class="kategori" align="center">Periode</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					$no=1;
+					foreach ($riwayat_penugasan as $db) :
+				?>
+				<tr class="gradeA">
+					<td width="4%"  style="text-align: center" class="konten"><?php echo $no; ?></td>
+					<td width="15%" class="konten"><?php echo $db['Nama_Penugasan']; ?></td>
+					<td width="23%" class="konten"><?php echo $db['Objek_Penugasan'];?></td>
+					<td width="23%" class="konten"><?php echo $db['Nama_Jenis_Penugasan']; ?></td>
+					<td width="20%" class="konten"><?php echo $db['Nama_Peran'];?></td>
+					<td width="15%" class="konten"><?php echo $db['Periode'];?></td>
+					
+				</tr>
+				<?php
+					$no++;
+					endforeach;
+				?>
+				
+			</tbody>
+		</table>
 	</body>
 </html>	
 

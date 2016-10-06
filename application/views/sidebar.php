@@ -33,7 +33,7 @@
 		</li>
 		<li><a href="javascript:;"><i class="fa fa-clone"></i> <span>Laporan</span> </a>
 			<ul class="acc-menu">
-				<li><a href="<?php echo base_url(); ?>sekolah_rekap"><i class="fa fa-file-archive-o"></i> <span>Rekap Data Siswa</span></a></li>
+				<li><a href="<?php echo base_url(); ?>report_pegawai"><i class="fa fa-file-archive-o"></i> <span>Laporan Pegawai</span></a></li>
 				<li><a href="<?php echo base_url(); ?>sekolah_peringkat"><i class="fa fa-trophy"></i> <span>Peringkat Siswa</span></a></li>
 			</ul>
 		</li>

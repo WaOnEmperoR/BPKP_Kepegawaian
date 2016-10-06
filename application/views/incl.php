@@ -24,12 +24,13 @@
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-fseditor/fseditor.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-tokenfield/bootstrap-tokenfield.css' /> <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/fullcalendar/fullcalendar.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-markdown/css/bootstrap-markdown.min.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/js/jqueryui.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/css/jquery-ui-1.12.0.min.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/codeprettifier/prettify.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-toggle/toggles.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css'/>
 
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/fonts/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/fonts/glyphicons/css/glyphicons.min.css">
 
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/datatables/dataTables.css' />
 
@@ -38,7 +39,7 @@
 
 
 
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jqueryui-1.10.3.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-ui-1.12.0.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/bootstrap.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/enquire.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.cookie.js'></script>

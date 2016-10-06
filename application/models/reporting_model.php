@@ -49,16 +49,22 @@
 		
 		function get_penugasan_pegawai($id_pegawai)
 		{
-			$db =  $this->db->query("SELECT pg.ID_Penugasan, pg.Objek_Penugasan, pg.Nama_Penugasan, m_pg.Nama_Jenis_Penugasan, m_pr.Nama_Peran, DATE_FORMAT(pg.Tanggal_Mulai_Penugasan, '%d-%m-%Y') AS Tanggal_Mulai, DATE_FORMAT(pg.Tanggal_Selesai_Penugasan, '%d %M %Y') AS Tanggal_Selesai, pg.Master_Peran_ID_Peran, pg.Master_Penugasan_ID_Jenis_Penugasan, pg.Pegawai_ID_Pegawai
+			$db =  $this->db->query("SELECT pg.ID_Penugasan, pg.Objek_Penugasan, pg.Nama_Penugasan, m_pg.Nama_Jenis_Penugasan, m_pr.Nama_Peran, CONCAT(DATE_FORMAT(pg.Tanggal_Mulai_Penugasan, '%d-%m-%Y'),' - ', DATE_FORMAT(pg.Tanggal_Selesai_Penugasan, '%d-%m-%Y')) AS Periode, pg.Master_Peran_ID_Peran, pg.Master_Penugasan_ID_Jenis_Penugasan, pg.Pegawai_ID_Pegawai
 			FROM master_peran m_pr, master_penugasan m_pg, penugasan pg
 			WHERE pg.Pegawai_ID_Pegawai=$id_pegawai AND pg.Master_Peran_ID_Peran=m_pr.ID_Peran AND pg.Master_Penugasan_ID_Jenis_Penugasan=m_pg.ID_Jenis_Penugasan");
 			return $db->result_array();
 		}
 		
+		function get_list_pegawai_old($nama_pegawai)
+		{
+			$db =  $this->db->query("SELECT ID_Pegawai, Nama_Pegawai, NIK, NIP FROM pegawai WHERE upper(Nama_Pegawai) like concat('%', upper('$nama_pegawai'), '%') ORDER BY Nama_Pegawai ");
+			return $db->result();
+		}
+		
 		function get_list_pegawai()
 		{
-			$db =  $this->db->query("SELECT Nama_Pegawai FROM pegawai ORDER BY Nama_Pegawai ");
-			return $db->result_array();
+			$db =  $this->db->query("SELECT ID_Pegawai, Nama_Pegawai, NIK, NIP FROM pegawai ORDER BY Nama_Pegawai ");
+			return $db->result();
 		}
 	}
 	

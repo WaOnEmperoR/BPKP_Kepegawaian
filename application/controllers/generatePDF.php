@@ -115,7 +115,7 @@
 			//$this->load->view('tesgraph');
 		}
 		
-		public function tambahan()
+		public function tambahan($kd_pegawai)
 		{
 			$pdf = new MYPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 			$pdf->SetPrintHeader(true);
@@ -163,7 +163,7 @@
 			$pdf->AddPage('P', 'A4');
 			//$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 			
-			$ret_header = $this->reporting_model->get_data_single_pegawai(1);
+			$ret_header = $this->reporting_model->get_data_single_pegawai($kd_pegawai);
 			
 			if ($ret_header->num_rows() > 0) {
 				foreach ($ret_header->result() as $db) {
@@ -181,16 +181,16 @@
 			
 			$data['pegawai']=$pegawai;
 			
-			$data['riwayat_pendidikan'] = $this->reporting_model->get_pendidikan_pegawai(1);
-			$data['riwayat_diklat'] = $this->reporting_model->get_diklat_pegawai(1);
-			$data['riwayat_sertifikasi'] = $this->reporting_model->get_sertifikasi_pegawai(1);
-			
+			$data['riwayat_pendidikan'] = $this->reporting_model->get_pendidikan_pegawai($kd_pegawai);
+			$data['riwayat_diklat'] = $this->reporting_model->get_diklat_pegawai($kd_pegawai);
+			$data['riwayat_sertifikasi'] = $this->reporting_model->get_sertifikasi_pegawai($kd_pegawai);
+			$data['riwayat_penugasan'] = $this->reporting_model->get_penugasan_pegawai($kd_pegawai);
 			//print_r($data);exit();
 			$html = $this->load->view('report/detail_pegawai', $data, true);
 			
 			$pdf->SetTitle('Judul');
-			$pdf->SetHeaderMargin(10);
-			$pdf->SetTopMargin(10);
+			$pdf->SetHeaderMargin(5);
+			$pdf->SetTopMargin(20);
 			$pdf->setFooterMargin(10);
 			$pdf->setLeftMargin(5);
 			$pdf->SetAuthor('Pengarang');
