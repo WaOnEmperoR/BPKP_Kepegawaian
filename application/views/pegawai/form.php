@@ -128,7 +128,7 @@
 								<li><a href="#4" data-toggle="tab">Pengalaman Lain</a>
 								</li>
 							</ul>
-							
+														
 							<div class="tab-content ">
 								<div class="tab-pane active" id="1">
 									<?php echo($content_inner_pendidikan);?>

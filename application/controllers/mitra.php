@@ -53,7 +53,7 @@
 				$d['Deskripsi'] = '';
 				$d['Kategori_Mitra_ID_Kategori_Mitra'] = '';
 				$d['Action'] = 'Tambah';
-
+				
 				$d['kategori_mitra_pilih'] = '';
 				$d['all_kategori_mitra'] = $this->mitra_model->get_all_kategori_mitra();
 				
@@ -81,7 +81,7 @@
 				//	$id['ID_Mitra'] = 0;
 				
 				//$data = $this->kategori_mitra_model->getSelectedData("kategori_mitra",$id);
-	
+				
 				$data = $this->mitra_model->getSelectedData("mitra",$id);
 				echo($data->num_rows());
 				if($data->num_rows()>0)
@@ -108,8 +108,8 @@
 			if (!empty($cek)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
-				$d['judul_halaman'] = "Ubah Data Pegawai";
-				$d['breadcumb'] = "Pengolahan Data Pegawai";
+				$d['judul_halaman'] = "Ubah Data Mitra";
+				$d['breadcumb'] = "Pengolahan Data Mitra";
 				$d['all_kategori_mitra'] = $this->mitra_model->get_all_kategori_mitra();
 				
 				$id = $this->uri->segment(3);
@@ -140,7 +140,7 @@
 					$d['Bidang_Usaha'] = '';
 					$d['Deskripsi'] = '';
 					$d['Kategori_Mitra_ID_Kategori_Mitra'] = '';
-				
+					
 				}
 				
 				$d['Action'] = 'Ubah';
@@ -154,7 +154,7 @@
 				
 				$d_inner_pendidikan['susunan_kepengurusan'] = $this->susunan_kepengurusan_model->get_all_susunan_kepengurusan($d['ID_Mitra']);
 				
-
+				
 				$d_inner_pendidikan['id_mitra'] = $d['ID_Mitra'];
 				
 				$d['content_inner_pendidikan'] = $this->load->view('susunan_kepengurusan/view_inner', $d_inner_pendidikan, true);

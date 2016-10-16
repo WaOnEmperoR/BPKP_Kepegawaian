@@ -26,7 +26,8 @@
 				$d['judul']     ="Home";
 				$d['title']     = $this->config->item('nama_aplikasi');
 
-				$d['content'] = "<p>Halo Cest</p>";
+				$d['content'] = $this->load->view('dashboard_mitensilan', $d, true);
+				//$d['content'] = "<p>Halo Cest</p>";
 				//echo("Here---");exit();
 				
 				$this->load->view('home',$d);

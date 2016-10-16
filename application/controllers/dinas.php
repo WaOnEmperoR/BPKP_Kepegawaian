@@ -82,7 +82,7 @@ class Dinas extends CI_Controller {
             }*/
 
 
-            if (!empty($_FILES['logo']['name'])) {
+            if (!empty($_FILES['logo']['name'])){
                     // upload
                     $config['upload_path']      = './uploads/logo_dinas/';
                     $config['allowed_types']    = 'gif|jpg|png';

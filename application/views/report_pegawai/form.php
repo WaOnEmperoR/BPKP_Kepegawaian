@@ -21,7 +21,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input type="hidden" name="id_pegawai" id="id_pegawai">
-							<input  name="autocomplete" placeholder="First Name" class="form-control"  type="text" id ="autocomplete">
+							<input name="autocomplete" placeholder="First Name" class="form-control"  type="text" id ="autocomplete">
 						</div>
 					</div>
 				</div>

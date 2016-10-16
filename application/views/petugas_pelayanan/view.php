@@ -62,7 +62,8 @@
 						</div>
 					</div>
 				</div>
-				
+			
 			</div> <!-- container -->
-		</div> <!--wrap -->
-	</div> <!-- page-content -->
+			</div> <!--wrap -->
+			</div> <!-- page-content -->
+						

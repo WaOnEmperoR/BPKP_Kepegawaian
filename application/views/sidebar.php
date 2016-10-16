@@ -34,6 +34,11 @@
 				<li><a href="<?php echo base_url(); ?>mitra"><i class="fa fa-check-square"></i> <span>Mitra</span></a></li>
 			</ul>
 		</li>
+		<li><a href="javascript:;"><i class="fa fa-clone"></i> <span>Data Pelayanan</span> </a>
+			<ul class="acc-menu">
+				<li><a href="<?php echo base_url(); ?>pelayanan"><i class="fa fa-file-archive-o"></i> <span>Pelayanan</span></a></li>
+			</ul>
+		</li>
 		<li><a href="javascript:;"><i class="fa fa-clone"></i> <span>Laporan</span> </a>
 			<ul class="acc-menu">
 				<li><a href="<?php echo base_url(); ?>report_pegawai"><i class="fa fa-file-archive-o"></i> <span>Laporan Pegawai</span></a></li>
