@@ -104,7 +104,7 @@
 								</div>
 							</div>
 						</div>
-					
+						
 						
 						<div class="panel-footer">
 							<div class="row">
@@ -130,5 +130,28 @@
 	$(document).ready(function(){
 		$('#tanggal_mulai_penugasan').datepicker({ format: 'dd-mm-yyyy' });
 		$('#tanggal_selesai_penugasan').datepicker({ format: 'dd-mm-yyyy' });
+	});
+	
+	$('#form').submit(function() {
+		
+		var mulai = $('#tanggal_mulai_penugasan').val();
+		var selesai = $('#tanggal_selesai_penugasan').val();
+		var d1 = getDateFromFormat(mulai, 'd-M-y');
+		var d2 = getDateFromFormat(selesai, 'd-M-y');
+		
+		if (d1>d2)
+		{
+			swal({ 
+				title: "Kesalahan!",   
+				text: "Tanggal Selesai harus lebih besar dari Tanggal Mulai",   
+				type: "error",   
+				confirmButtonText: "OK" 
+			});
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	});
 </script>

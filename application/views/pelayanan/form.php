@@ -71,7 +71,8 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Biaya </label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" name="biaya" value="<?php echo $Biaya; ?>" autofocus="true" >
+								<input type="hidden" class="form-control" id="biaya" name="biaya" value="<?php echo $Biaya; ?>" autofocus="true" >
+								<input type="text" class="form-control" id="biaya_masked" name="biaya_masked" value="<?php echo $Biaya; ?>" autofocus="true" >
 							</div>
 						</div>
 						<div class="form-group">
@@ -148,6 +149,7 @@
 		$('#example1').DataTable();
 		$('#example2').DataTable();
 		$('#example3').DataTable();
+		
 		$('#tanggal_mulai').datepicker({ format: 'dd-mm-yyyy' });
 		$('#tanggal_selesai').datepicker({ format: 'dd-mm-yyyy' });
 		$('#tanggal_laporan_pelaksanaan').datepicker({ format: 'dd-mm-yyyy' });
@@ -160,7 +162,6 @@
 					url: '<?php echo base_url()."pelayanan/get_all_mitra/"; ?>' + request.term,
 					dataType: "json",
 					success: function (data) {
-					//alert("Masuk sini");
 						var parsed = (data);
 						var newArray = new Array(parsed.length);
 						var i = 0;
@@ -186,5 +187,56 @@
 				$('#id_mitra').val(ui.item.ID);
 			}
 		});
+		
+		$('#biaya_masked').priceFormat({
+			prefix: 'Rp ',
+			centsSeparator: ',',
+			thousandsSeparator: '.',
+			centsLimit: 0			
+		});
+		
+		
 	});
-</script>
+	
+	$('#form').submit(function() {
+		var str=$('#biaya_masked').unmask();
+		$('#biaya').val(str);
+		
+		var mulai = $('#tanggal_mulai').val();
+		var selesai = $('#tanggal_selesai').val();
+		var laporan = $('#tanggal_laporan_pelaksanaan').val();
+		var d1 = getDateFromFormat(mulai, 'd-M-y');
+		var d2 = getDateFromFormat(selesai, 'd-M-y');
+		var d3 = getDateFromFormat(laporan, 'd-M-y');
+		
+		if (d1>d2)
+		{
+			swal({ 
+				title: "Kesalahan!",   
+				text: "Tanggal Selesai harus lebih besar dari Tanggal Mulai",   
+				type: "error",   
+				confirmButtonText: "OK" 
+			});
+			$('#nama_mitra').focus().select();
+			return false;
+		}
+		else
+		{
+			if (d2>d3)
+			{
+				swal({ 
+					title: "Kesalahan!",   
+					text: "Tanggal Laporan harus lebih besar dari Tanggal Selesai",   
+					type: "error",   
+					confirmButtonText: "OK" 
+				});
+				$('#nama_mitra').focus().select();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+	});
+	</script>

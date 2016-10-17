@@ -57,7 +57,7 @@
 										<td><?php echo $db['Tanggal_Mulai']; ?></td>
 										<td><?php echo $db['Tanggal_Selesai'];?></td>
 										<td><?php echo $db['Tanggal_Laporan_Pelaksanaan'];?></td>
-										<td><?php echo $db['Biaya'];?></td>
+										<td class="uang"><?php echo $db['Biaya'];?></td>
 										<td><?php echo $db['Nama_Mitra'];?></td>
 										<td><?php echo $db['Kategori_Layanan'];?></td>
 										
@@ -109,5 +109,12 @@
 				evt.cancelBubble = true;
 			}
 		}
+		
+		$('.uang').priceFormat({
+			prefix: 'Rp ',
+			centsSeparator: ',',
+			thousandsSeparator: '.',
+			centsLimit: 0			
+		});
 		
 	</script>				
