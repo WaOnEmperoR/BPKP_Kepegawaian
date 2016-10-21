@@ -11,6 +11,7 @@
 			
 			include(APPPATH."libraries/FusionCharts.php");	
 			$this->load->model('m_dashboard_populate');
+			$this->load->model('mitensilan_dashboard_model');
 		}
 		
 		public function index()
@@ -19,12 +20,19 @@
 			$this->load->library('table');
 			
 			$cek = $this->session->userdata('logged_in');
+			$pelayanan = $this->mitensilan_dashboard_model->Get_Pelayanan_Yearly()->result();
 			
+			$graph['yearly_service']=json_encode($pelayanan);
+			
+			//print_r($graph['yearly_service']);
+			
+			//exit();
 			
 			if(!empty($cek)){
 				
 				$d['judul']     ="Home";
 				$d['title']     = $this->config->item('nama_aplikasi');
+				$d['graph']		= $graph;
 
 				$d['content'] = $this->load->view('dashboard_mitensilan', $d, true);
 				//$d['content'] = "<p>Halo Cest</p>";
@@ -185,6 +193,8 @@
 		public function get_pass_psb_reg($id_sekolah)
 		{
 		}
+		
+		
 	}
 	
 	/* End of file home.php */

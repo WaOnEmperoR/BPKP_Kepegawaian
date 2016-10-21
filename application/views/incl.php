@@ -32,6 +32,7 @@
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/fonts/glyphicons/css/glyphicons.min.css">
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/datatables/dataTables.css' />
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/css/sweetalert.css">
+<link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/css/morris.css">
 
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js'></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/less.js"></script>
@@ -40,6 +41,8 @@
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/enquire.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/dateparser.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/sweetalert.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/morris.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/raphael-min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.cookie.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.nicescroll.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.priceformat.min.js'></script>
