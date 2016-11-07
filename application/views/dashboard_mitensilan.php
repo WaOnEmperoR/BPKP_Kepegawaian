@@ -61,7 +61,19 @@
 								<h4 style="display: inline-block">Layanan Per Tahun</h4>
 							</div>
 							<div class="panel-body">
-								<div id="myfirstchart">
+								<div id="layanan_tahunan">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						
+						<div class="panel panel-indigo">
+							<div class="panel-heading">
+								<h4 style="display: inline-block">Layanan Per Pegawai</h4>
+							</div>
+							<div class="panel-body">
+								<div id="layanan_pegawai">
 								</div>
 							</div>
 						</div>
@@ -76,21 +88,38 @@
 	$(document).ready(function () {
 		var layanan_per_tahun = [];
 		var yearly_service = '<?php echo($graph['yearly_service']);?>';
+		var employee_service = '<?php echo($graph['employee_service']);?>';
 		
-		var arr = [];
+		var arr_year = [];
 		$.each($.parseJSON(yearly_service), function(key,value){
-			arr.push({
+			arr_year.push({
 				Tahun: value.Tahun,
 				Jumlah: value.Jumlah
 			});
 		});
+
+		var arr_employee = [];
+		$.each($.parseJSON(employee_service), function(key,value){
+			arr_employee.push({
+				Nama_Pegawai: value.Nama_Pegawai,
+				Jumlah_Pelayanan: value.Jumlah_Pelayanan
+			});
+		});
 				
 		new Morris.Bar({
-			element: 'myfirstchart',
-			data: arr, // use returned data to plot the graph
+			element: 'layanan_tahunan',
+			data: arr_year, // use returned data to plot the graph
 			xkey: 'Tahun',
 			ykeys: ['Jumlah'],
 			labels: ['Jumlah']
+		});
+
+		new Morris.Bar({
+			element: 'layanan_pegawai',
+			data: arr_employee, // use returned data to plot the graph
+			xkey: 'Nama_Pegawai',
+			ykeys: ['Jumlah_Pelayanan'],
+			labels: ['Jumlah_Pelayanan']
 		});
 		
 	});
