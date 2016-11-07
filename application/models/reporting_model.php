@@ -49,9 +49,18 @@
 		
 		function get_penugasan_pegawai($id_pegawai)
 		{
-			$db =  $this->db->query("SELECT pg.ID_Penugasan, pg.Objek_Penugasan, pg.Nama_Penugasan, m_pg.Nama_Jenis_Penugasan, m_pr.Nama_Peran, CONCAT(DATE_FORMAT(pg.Tanggal_Mulai_Penugasan, '%d-%m-%Y'),' - ', DATE_FORMAT(pg.Tanggal_Selesai_Penugasan, '%d-%m-%Y')) AS Periode, pg.Master_Peran_ID_Peran, pg.Master_Penugasan_ID_Jenis_Penugasan, pg.Pegawai_ID_Pegawai
+			$db =  $this->db->query("SELECT pg.ID_Penugasan, pg.Objek_Penugasan, pg.Nama_Penugasan, m_pg.Nama_Jenis_Penugasan, m_pr.Nama_Peran, CONCAT(DATE_FORMAT(pg.Tanggal_Mulai_Penugasan, '%d-%m-%Y'),' s.d. ', DATE_FORMAT(pg.Tanggal_Selesai_Penugasan, '%d-%m-%Y')) AS Periode, pg.Master_Peran_ID_Peran, pg.Master_Penugasan_ID_Jenis_Penugasan, pg.Pegawai_ID_Pegawai
 			FROM master_peran m_pr, master_penugasan m_pg, penugasan pg
 			WHERE pg.Pegawai_ID_Pegawai=$id_pegawai AND pg.Master_Peran_ID_Peran=m_pr.ID_Peran AND pg.Master_Penugasan_ID_Jenis_Penugasan=m_pg.ID_Jenis_Penugasan");
+			return $db->result_array();
+		}
+		
+		function get_pelayanan_pegawai($id_pegawai)
+		{
+			$db =  $this->db->query("SELECT py.Nomor_Pelayanan, py.Judul_Pelayanan, m.Nama_Mitra, mp.Nama_Peran, CONCAT(DATE_FORMAT(py.Tanggal_Mulai, '%d-%m-%Y'), ' s.d. ', DATE_FORMAT(py.Tanggal_Selesai, '%d-%m-%Y')) as Pelaksanaan
+			FROM pelayanan_has_pegawai php, pegawai p, mitra m, pelayanan py, master_peran mp
+			WHERE php.Pegawai_ID_Pegawai = p.ID_Pegawai and php.Pelayanan_ID_Pelayanan = py.ID_Pelayanan and php.Master_Peran_ID_Peran = mp.ID_Peran
+			and py.Mitra_ID_Mitra = m.ID_Mitra and p.ID_Pegawai = $id_pegawai");
 			return $db->result_array();
 		}
 		
@@ -66,6 +75,67 @@
 			$db =  $this->db->query("SELECT ID_Pegawai, Nama_Pegawai, NIK, NIP FROM pegawai ORDER BY Nama_Pegawai ");
 			return $db->result();
 		}
+		
+		function get_pelayanan_mitra($id_layanan, $tgl_mulai, $tgl_selesai, $id_mitra)
+		{
+			$counter = 0;
+			$layanan_query = "";
+			$start_date = "";
+			$end_date = "";
+			$mitra_query = "";
+			$where_total = "";
+			$arr_where = array();
+			
+			if ($id_layanan!="kosong")
+			{
+				$layanan_query = "p.Jenis_Layanan_ID_Jenis_Layanan = $id_layanan";
+				$arr_where[$counter] = $layanan_query;
+				$counter++;
+			}
+			if ($tgl_mulai != "kosong")
+			{
+				$start_date = "p.Tanggal_Mulai >= STR_TO_DATE('$tgl_mulai', '%d-%m-%Y')";
+				$arr_where[$counter] = $start_date;
+				$counter++;
+			}
+			if ($tgl_selesai != "kosong")
+			{
+				$end_date = "p.Tanggal_Selesai <= STR_TO_DATE('$tgl_selesai', '%d-%m-%Y')";
+				$arr_where[$counter] = $end_date;
+				$counter++;
+			}
+			if ($id_mitra != "kosong")
+			{
+				$mitra_query = "m.ID_Mitra = $id_mitra";
+				$arr_where[$counter] = $mitra_query;
+				$counter++;
+			}
+			$arr_where[$counter] = "m.ID_Mitra = p.Mitra_ID_Mitra";
+									
+			$where_total = implode(" AND ", $arr_where);			
+			$where_total = " WHERE ".$where_total;
+			
+			$query = "SELECT p.ID_Pelayanan, p.Nomor_Pelayanan, p.Judul_Pelayanan, p.Tanggal_Mulai, p.Tanggal_Selesai, p.Biaya, p.Tanggal_Laporan_Pelaksanaan, m.Nama_Mitra
+			FROM pelayanan p, mitra m
+			$where_total";
+			//echo($query);exit();
+			
+			$db = $this->db->query($query);
+			return $db->result_array();
+		}
+		
+		function get_mitra_autocomplete($nama_mitra)
+		{
+			$db =  $this->db->query("SELECT ID_Mitra, Nama_Mitra FROM mitra WHERE upper(Nama_Mitra) like concat('%', upper('$nama_mitra'), '%') ORDER BY Nama_Mitra");
+			return $db->result();
+		}
+		
+		function get_jenis_layanan()
+		{
+			$db = $this->db->query("SELECT ID_Jenis_Layanan, Kategori_Layanan FROM jenis_layanan");
+			return $db->result_array();
+		}
+		
 	}
 	
 	/* End of file lampiran_model.php */

@@ -32,8 +32,8 @@
 										<th>Alamat</th>
 										<th>Jenis Kelamin</th>
 										<th>Agama</th>
-										<th>Aksi</th>
-									</tr>
+										<th rowspan="2">Aksi</th>
+									</tr> 
 									<tr id="filterrow">
 										<th>Nama pegawai</th>
 										<th>NIK</th>
@@ -43,7 +43,6 @@
 										<th>Alamat</th>
 										<th>Jenis Kelamin</th>
 										<th>Agama</th>
-										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -100,10 +99,8 @@
 			$(this).html( '<input type="text" class="form-control" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
 		} );
 		
-		
 		// DataTable
 		var table = $('#example').DataTable();
-		
 		
 		// Apply the filter
 		$("#example thead input").on( 'keyup change', function () {

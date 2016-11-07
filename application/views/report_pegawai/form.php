@@ -32,7 +32,7 @@
 					<label class="col-md-4 control-label" >NIP</label> 
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-tower"></i></span>
 							<input name="NIP" placeholder="NIP" class="form-control"  type="text" id="NIP" disabled>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 					<label class="col-md-4 control-label" >NIK</label> 
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
 							<input name="NIK" placeholder="NIK" class="form-control"  type="text" id="NIK" disabled>
 						</div>
 					</div>

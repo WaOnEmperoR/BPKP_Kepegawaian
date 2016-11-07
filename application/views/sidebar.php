@@ -36,12 +36,13 @@
 		</li>
 		<li><a href="javascript:;"><i class="fa fa-folder-open"></i> <span>Data Pelayanan</span> </a>
 			<ul class="acc-menu">
-				<li><a href="<?php echo base_url(); ?>pelayanan"><i class="fa fa-file-archive-o"></i> <span>Pelayanan</span></a></li>
+				<li><a href="<?php echo base_url(); ?>pelayanan"><i class="fa fa-check-square"></i> <span>Pelayanan</span></a></li>
 			</ul>
 		</li>
 		<li><a href="javascript:;"><i class="fa fa-file-pdf-o"></i> <span>Laporan</span> </a>
 			<ul class="acc-menu">
-				<li><a href="<?php echo base_url(); ?>report_pegawai"><i class="fa fa-file-archive-o"></i> <span>Laporan Pegawai</span></a></li>
+				<li><a href="<?php echo base_url(); ?>report_pegawai"><i class="fa fa-check-square"></i> <span>Laporan Pegawai</span></a></li>
+				<li><a href="<?php echo base_url(); ?>report_pelayanan_mitra"><i class="fa fa-check-square"></i> <span>Laporan Pelayanan Mitra</span></a></li>
 			</ul>
 		</li>
 		<li class="divider"></li>

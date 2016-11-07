@@ -31,7 +31,7 @@
 										<th>Bidang Usaha</th>
 										<th>Deskripsi</th>
 										<th>Kategori Mitra</th>
-										<th>Aksi</th>
+										<th rowspan="2">Aksi</th>
 									</tr>
 									<tr id="filterrow">
 										<th>Nama Mitra</th>
@@ -41,7 +41,6 @@
 										<th>Bidang Usaha</th>
 										<th>Deskripsi</th>
 										<th>Kategori Mitra</th>
-										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>

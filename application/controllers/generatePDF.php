@@ -185,6 +185,7 @@
 			$data['riwayat_diklat'] = $this->reporting_model->get_diklat_pegawai($kd_pegawai);
 			$data['riwayat_sertifikasi'] = $this->reporting_model->get_sertifikasi_pegawai($kd_pegawai);
 			$data['riwayat_penugasan'] = $this->reporting_model->get_penugasan_pegawai($kd_pegawai);
+			$data['riwayat_pelayanan'] = $this->reporting_model->get_pelayanan_pegawai($kd_pegawai);
 			//print_r($data);exit();
 			$html = $this->load->view('report/detail_pegawai', $data, true);
 			
@@ -198,7 +199,74 @@
 			$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 			
 			
-			$pdf->Output('Tes_PDF.pdf','I');
+			$pdf->Output('Report Detail Pegawai.pdf','I');
+			//$pdf->Output($fileNL,'D');
+			
+		}
+		
+		public function rekap_pelayanan($id_layanan, $tgl_mulai, $tgl_selesai, $id_mitra)
+		{
+			$pdf = new MYPDF('L', 'mm', 'A4', true, 'UTF-8', false);
+			$pdf->SetPrintHeader(true);
+			$pdf->SetPrintFooter(true);
+			$pdf->SetCreator(PDF_CREATOR);
+			$pdf->SetPageOrientation('L');
+			$pdf->SetAuthor('Kemenkominfo');
+			$pdf->SetTitle('Daftar THP');
+			$pdf->SetSubject('Surat Pendaftaran THP');
+			$pdf->SetKeywords('Daftar THP');
+			$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+			$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+			$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+			$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+			$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+			$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+			$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+			$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+			if (@file_exists(dirname(__FILE__).'/lang/eng.php'))
+			{
+				require_once(dirname(__FILE__).'/lang/eng.php');
+				$pdf->setLanguageArray($l);
+			}
+			
+			
+			// set additional information
+			$info = array(
+			'Name' => 'PANSELNAS DIKDIN',
+			'Location' => 'INDONESIA',
+			'Reason' => 'Validasi Pendaftaran DIKDIN',
+			'ContactInfo' => 'Kementerian PAN-RB',
+			);
+			
+			
+			$pdf->setFontSubsetting(true);
+			$pdf->SetFont('Courier', '', 10, '', true);
+			$helvetica=$pdf->AddFont('helvetica');        //custom font
+			$courier=$pdf->AddFont('courier');      //custom font
+			$calibri=$pdf->AddFont('Calibri');        //custom font
+			$calibrib=$pdf->AddFont('calibrib');      //custom font
+			
+			//$pdf->SetFont($calibri, '', 14, '', false);
+			
+			$pdf->SetTopMargin(5);
+			$pdf->AddPage('L', 'A4');
+			//$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+			
+			$data['list_pelayanan'] = $this->reporting_model->get_pelayanan_mitra($id_layanan, $tgl_mulai, $tgl_selesai, $id_mitra);
+			//print_r($data);exit();
+			$html = $this->load->view('report/rekap_pelayanan', $data, true);
+			
+			$pdf->SetTitle('Judul');
+			$pdf->SetHeaderMargin(5);
+			$pdf->SetTopMargin(20);
+			$pdf->setFooterMargin(10);
+			$pdf->setLeftMargin(5);
+			$pdf->SetAuthor('Pengarang');
+			$pdf->SetDisplayMode('real', 'default');
+			$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+			
+			
+			$pdf->Output('Report Detail Pelayanan.pdf','I');
 			//$pdf->Output($fileNL,'D');
 			
 		}

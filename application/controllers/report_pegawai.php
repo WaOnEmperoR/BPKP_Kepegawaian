@@ -45,8 +45,6 @@
 		{
 			$id_pegawai = $this->input->post('id_pegawai');
 			
-			//echo($id_pegawai);exit();
-			
 			redirect('generatePDF/tambahan/'.$id_pegawai);
 		}
 		
