@@ -8,6 +8,7 @@
 		/**
 			* @author : Caberawit
 		* */
+		
 		public function __construct() {
 			parent::__construct();
 			$this->load->model('reporting_model');
@@ -24,7 +25,7 @@
 			
 			$d['content'] = $this->load->view('report_layanan_mitra/form', $d, true);
 			
-			$this->load->view('home', $d);;
+			$this->load->view('home', $d);
 		}
 		
 		public function get_all_mitra($kode) {
