@@ -43,6 +43,7 @@
     <div class="panel panel-primary">
         <div class="panel-body">
             <h4 class="text-center" style="margin-bottom: 25px;">Silahkan Login</h4>
+            <!-- <?php echo form_open("login/index");?> -->
             <form method="post" action="<?php echo base_url(); ?>login/index" class="form-horizontal" style="margin-bottom: 0px !important;">
                 <div class="form-group">
                     <div class="col-sm-12">
@@ -60,11 +61,23 @@
                         </div>
                     </div>
                 </div>
-				
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="input-group">    
+                            
+                            <?php echo lang('login_remember_label', 'remember');?>
+                            <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+                            <p>
+                                    <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
+                                </p>
+                            
+                        </div>
+                    </div>
+                </div>
                 <!--div class="clearfix">
                     <div class="pull-right"><label><input type="checkbox" style="margin-bottom: 20px" checked=""> Remember Me</label></div>
                 </div-->
-
 
         </div>
         <div class="panel-footer">
@@ -72,9 +85,11 @@
             <div class="pull-right">
                 <a id="reset" class="btn btn-default">Reset</a>
                 <?php echo form_button($submit,'Login');?>
+                <!-- <?php echo form_submit('submit', lang('login_submit_btn'));?> -->
             </div>
         </div>
         </form>
+        <!-- <?php echo form_close();?> -->
     </div>
 </div>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js'></script>
