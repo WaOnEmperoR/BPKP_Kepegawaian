@@ -18,7 +18,8 @@
 				</div>
 				<div class="panel-body collapse in">
 					<form id="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>tingkat_pendidikan/simpan" method="post" class="form-horizontal row-border">
-						
+					
+
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Nama Tingkat Pendidikan</label>
 							<div class="col-sm-6">
@@ -44,6 +45,8 @@
 								</div>
 							</div>
 						</div>
+
+
 					</form>
 				</div>
 				

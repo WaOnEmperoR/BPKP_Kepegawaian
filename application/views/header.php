@@ -13,7 +13,7 @@
                 <li class="username">
                     <a href="#">
                         <div class="pull-left"><img src="<?php echo base_url(); ?>assets/demo/avatar/doyle.png" alt="<?php echo $this->app_model->CariUserPengguna();?>"/></div>
-                        <div class="pull-right"><h5>Hai, <?php echo $this->app_model->CariNamaPengguna();?></h5><small>Logged in as <span><?php echo $this->app_model->CariUserPengguna();?></span></small></div>
+                        <div class="pull-right"><h5>Hai, <?php echo ($this->ion_auth->user()->row()->first_name." ".$this->ion_auth->user()->row()->last_name);?></h5><small>Logged in as <span><?php echo $this->ion_auth->user()->row()->username;?></span></small></div>
                     </a>
                 </li>
                 <li class="userlinks">
