@@ -21,7 +21,7 @@ class Users_Man extends CI_Controller
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
         $this->lang->load('auth');
     }
-
+    
     public function index()
     {
         if ($this->ion_auth->is_admin()) {
@@ -41,21 +41,21 @@ class Users_Man extends CI_Controller
             $this->load->view('error_404');
         }
     }
-
+    
     public function tambah()
     {
         if ($this->ion_auth->is_admin()) {
             /*$d['title'] = $this->config->item('nama_aplikasi');				$d['judul_halaman'] = "Tambah Data Tingkat Pendidikan";				$d['breadcumb'] = "Pengolahan Data Tingkat Pendidikan";								$d['ID_Tingkat_Pendidikan'] = '';				$d['Nama_Tingkat_Pendidikan'] = '';				$d['Deskripsi_Tingkat_Pendidikan'] = '';								$d['content'] = $this->load->view('tingkat_pendidikan/form', $d, true);								$this->load->view('home', $d);				} else {				header('location:' . base_url());*/
         }
     }
-
+    
     public function simpan()
     {
         if ($this->ion_auth->is_admin()) {
             /*$id['ID_Tingkat_Pendidikan'] = $this->input->post('id');				$up['Nama_Tingkat_Pendidikan'] = $this->input->post('nama_tingkat');				$up['Deskripsi_Tingkat_Pendidikan'] = $this->input->post('deskripsi');								$data = $this->tingkat_pendidikan_model->getSelectedData("tingkat_pendidikan",$id);				echo($data->num_rows());				if($data->num_rows()>0){					$this->tingkat_pendidikan_model->updateData("tingkat_pendidikan",$up,$id);					}else{					$this->tingkat_pendidikan_model->insertData("tingkat_pendidikan",$up);				}								redirect('tingkat_pendidikan');				} else {				header('location:' . base_url());*/
         }
     }
-
+    
     public function ubah($id)
     {
         if ($this->ion_auth->is_admin()) {
@@ -177,17 +177,81 @@ class Users_Man extends CI_Controller
                 'type' => 'password'
             );
             //$			this->load->view('users_man/form', $this->data);
-            $d['content']                   = $this->load->view('users_man/form', $this->data, true);
+            $d['content'] = $this->load->view('users_man/form', $this->data, true);
             $this->load->view('home', $d);
             //$			this->_render_page('auth/edit_user', $this->data);
         }
     }
+    
+    // edit a group
+    public function edit_group($id)
+    {
+        $this->data['title']         = $this->config->item('nama_aplikasi');
+        $this->data['judul_halaman'] = "Ubah Data Grup";
+        $this->data['breadcumb']     = "Pengolahan Data Grup";
 
+        // bail if no group id given
+        if (!$id || empty($id)) {
+            redirect('/users_man', 'refresh');
+        }
+        
+        $this->data['title'] = $this->lang->line('edit_group_title');
+        
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+            redirect('/users_man', 'refresh');
+        }
+        
+        $group = $this->ion_auth->group($id)->row();
+        
+        // validate form input
+        $this->form_validation->set_rules('group_name', $this->lang->line('edit_group_validation_name_label'), 'required|alpha_dash');
+        
+        if (isset($_POST) && !empty($_POST)) {
+            if ($this->form_validation->run() === TRUE) {
+                $group_update = $this->ion_auth->update_group($id, $_POST['group_name'], $_POST['group_description']);
+                
+                if ($group_update) {
+                    $this->session->set_flashdata('message', $this->lang->line('edit_group_saved'));
+                } else {
+                    $this->session->set_flashdata('message', $this->ion_auth->errors());
+                }
+                redirect("/users_man", 'refresh');
+            }
+        }
+        
+        // set the flash data error message if there is one
+        $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+        
+        // pass the user to the view
+        $this->data['group'] = $group;
+        
+        $readonly = $this->config->item('admin_group', 'ion_auth') === $group->name ? 'readonly' : '';
+        
+        $this->data['group_name']        = array(
+            'name' => 'group_name',
+            'id' => 'group_name',
+            'type' => 'text',
+            'class' => 'form-control',
+            'value' => $this->form_validation->set_value('group_name', $group->name),
+            $readonly => $readonly
+        );
+        $this->data['group_description'] = array(
+            'name' => 'group_description',
+            'id' => 'group_description',
+            'type' => 'text',
+            'class' => 'form-control',
+            'value' => $this->form_validation->set_value('group_description', $group->description)
+        );
+        
+        $d['content'] = $this->load->view('edit_group', $this->data, true);
+        $this->load->view('home', $d);
+    }
+    
     public function hapus()
     {
         /*if ($this->ion_auth->is_admin()) {				$id = $this->uri->segment(3);				$this->tingkat_pendidikan_model->manualQuery("DELETE FROM tingkat_pendidikan WHERE ID_Tingkat_Pendidikan='$id'");				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "tingkat_pendidikan'>";				} else {				header('location:' . base_url());			}*/
     }
-
+    
     public function _valid_csrf_nonce()
     {
         $csrfkey = $this->input->post($this->session->flashdata('csrfkey'));
@@ -197,7 +261,7 @@ class Users_Man extends CI_Controller
             return FALSE;
         }
     }
-	
+    
     public function _get_csrf_nonce()
     {
         $this->load->helper('string');
@@ -209,10 +273,10 @@ class Users_Man extends CI_Controller
             $key => $value
         );
     }
+    
 }
 /* End of file pegawai.php */
 /* Location: ./application/controllers/pegawai.php */
-
 
 
 
