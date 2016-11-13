@@ -19,10 +19,17 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function index() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Data Mitra";
@@ -38,7 +45,7 @@
 		}
 		
 		public function tambah() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Mitra";
@@ -66,7 +73,7 @@
 		}
 		
 		public function simpan() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$id['ID_Mitra'] = $this->input->post('id');
 				$up['Nama_Mitra'] = $this->input->post('nama');
@@ -104,8 +111,7 @@
 		}
 		
 		public function ubah() {
-			$cek = $this->session->userdata('logged_in');
-			if (!empty($cek)) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Mitra";
@@ -151,15 +157,11 @@
 				$d_inner_pendidikan['breadcumb'] = "Pengolahan Susunan Kepengurusan";
 				
 				$d_inner_pendidikan['all_posisi_kepengurusan'] = $this->susunan_kepengurusan_model->all_posisi_kepengurusan();
-				
 				$d_inner_pendidikan['susunan_kepengurusan'] = $this->susunan_kepengurusan_model->get_all_susunan_kepengurusan($d['ID_Mitra']);
-				
-				
+								
 				$d_inner_pendidikan['id_mitra'] = $d['ID_Mitra'];
-				
 				$d['content_inner_pendidikan'] = $this->load->view('susunan_kepengurusan/view_inner', $d_inner_pendidikan, true);
-				
-				
+								
 				$d['content'] = $this->load->view('mitra/form', $d, true);
 				
 				$this->load->view('home', $d);
@@ -169,7 +171,7 @@
 		}
 		
 		public function hapus() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				$id = $this->uri->segment(3);
 				$this->pegawai_model->manualQuery("DELETE FROM mitra WHERE ID_Mitra='$id'");
 				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "mitra'>";

@@ -80,7 +80,6 @@
 		}
 		
 		public function ubah() {
-			//$cek = $this->session->userdata('logged_in');
 			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');

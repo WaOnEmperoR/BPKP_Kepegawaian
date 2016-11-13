@@ -24,7 +24,8 @@
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-markdown/css/bootstrap-markdown.min.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/css/jquery-ui-1.12.0.min.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/codeprettifier/prettify.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-toggle/toggles.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-toggle/toggles-full.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/form-toggle/toggles-all.css' />
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css'/>
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/fonts/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/fonts/glyphicons/css/glyphicons.min.css">
@@ -60,10 +61,8 @@
 <!--<script type='text/javascript' src='--><?php //echo base_url(); ?><!--assets/plugins/form-fseditor/jquery.fseditor-min.js'></script>-->
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-jasnyupload/fileinput.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script>
-<!--<script type='text/javascript' src='--><?php //echo base_url(); ?><!--assets/demo/demo-formcomponents.js'></script>-->
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/placeholdr.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/application.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/demo/demo.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.numeric.min.js'></script>
 <!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
 <!--<script type='text/javascript' src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
@@ -78,6 +77,7 @@
         $(".datepicker").datepicker({format: 'yyyy-mm-dd'});
         $("input.numeric").numeric();
 		$('#example').DataTable();
+        
     });
 </script>
 

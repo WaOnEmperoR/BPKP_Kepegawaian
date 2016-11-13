@@ -14,6 +14,7 @@
 					<h4>Form - <?php echo $judul_halaman; ?></h4>
 				</div>
 				<div class="panel-body collapse in">
+					<?php if ($this->uri->segment(2) == 'edit_group') { ?>
 					<form id="form" enctype="multipart/form-data" action="<?php echo current_url(); ?>" method="post" class="form-horizontal row-border">
 						<div class="form-group">
 							<label class="col-sm-3 control-label"><?php echo lang('edit_group_name_label', 'group_name');?></label>
@@ -31,12 +32,39 @@
 							<div class="row">
 								<div class="col-sm-6 col-sm-offset-3">
 									<div class="btn-toolbar">
+										<div id="infoMessage"><?php echo $message;?></div>
 										<?php echo form_submit('submit', lang('edit_group_submit_btn'));?>	
 									</div>
 								</div>
 							</div>
 						</div>
 					</form>
+					<?php } elseif ($this->uri->segment(2) == 'create_group') { ?>
+					<form id="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>users_man/create_group" method="post" class="form-horizontal row-border">
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><?php echo lang('create_group_name_label', 'group_name');?></label>
+							<div class="col-sm-6">
+								<?php echo form_input($group_name);?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><?php echo lang('create_group_desc_label', 'description');?></label>
+							<div class="col-sm-6">
+								<?php echo form_input($description);?>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-6 col-sm-offset-3">
+									<div class="btn-toolbar">
+										<div id="infoMessage"><?php echo $message;?></div>
+										<?php echo form_submit('submit', lang('create_group_submit_btn'));?>	
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>	
+					<?php } ?>
 				</div>
 			</div>
 		</div>

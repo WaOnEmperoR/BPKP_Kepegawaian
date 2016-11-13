@@ -14,10 +14,17 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function index() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Master Jenis Diklat";
@@ -33,7 +40,7 @@
 		}
 		
 		public function tambah() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Master Diklat";
@@ -52,7 +59,7 @@
 		}
 		
 		public function simpan() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$id['ID_Jenis_Diklat'] = $this->input->post('id');
 				$up['Nama_Jenis_Diklat'] = $this->input->post('nama_jenis');
@@ -74,7 +81,7 @@
 		
 		public function ubah() {
 			$cek = $this->session->userdata('logged_in');
-			if (!empty($cek)) {
+			if ($this->ion_auth->is_admin()) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Master Diklat";
@@ -107,7 +114,7 @@
 		}
 		
 		public function hapus() {
-			if (is_admin()) {
+			if ($this->ion_auth->is_admin()) {
 				$id = $this->uri->segment(3);
 				$this->jenis_diklat_model->manualQuery("DELETE FROM jenis_diklat WHERE ID_Jenis_Diklat='$id'");
 				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "jenis_diklat'>";
