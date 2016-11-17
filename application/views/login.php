@@ -25,7 +25,6 @@
 <body class="focusedform background-login">
 
 <div class="verticalcenter">
-    <!--a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/img/logo-big2.png" alt="Logo" class="brand" /></a-->
     <div class="login-logo">
         <a href="#">
             <img src="<?php echo base_url(); ?>assets/img/logo_login.png">
@@ -65,12 +64,12 @@
                 <div class="form-group">
                     <div class="col-sm-12">
                         <div class="input-group">    
-                            
+                            <div id="infoMessage"><b><font color="red"><?php echo $message;?></font></b></div>
                             <?php echo lang('login_remember_label', 'remember');?>
                             <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
                             <p>
-                                    <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
-                                </p>
+                                <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
+                            </p>
                             
                         </div>
                     </div>

@@ -14,10 +14,18 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function tambah() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$data = array(
 				'Pelayanan_ID_Pelayanan' => $this->input->post('id_pelayanan'),
@@ -32,7 +40,8 @@
 		
 		
 		public function ubah() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$id_php = "ID_Pelayanan_has_Pegawai =".$this->input->post('id_pelayanan_has_pegawai');
 				//echo $id_sp;exit();
@@ -53,7 +62,8 @@
 		
 		
 		public function hapus() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				$id_pelayanan = $this->uri->segment(3);
 				$id_php = $this->uri->segment(4);
 				
@@ -66,15 +76,11 @@
 		
 		
 		public function getData() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				$id = $this->uri->segment(3);
 				$data = $this->petugas_pelayanan_model->getData($id);
 				echo json_encode( array("ID_Pelayanan_has_Pegawai" => $data[0]['ID_Pelayanan_has_Pegawai'], "Pelayanan_ID_Pelayanan" => $data[0]['Pelayanan_ID_Pelayanan'], "Pegawai_ID_Pegawai" => $data[0]['Pegawai_ID_Pegawai'], "Master_Peran_ID_Peran" => $data[0]['Master_Peran_ID_Peran'], "Nama_Pegawai" => $data[0]['Nama_Pegawai']));
-				//exit();
-				//array("Nama_Pengurus" => $data[0, "id" => "2")
-				//echo json_encode($data); exit();
-				//echo json_encode();
-				//echo json_encode($data);
 			} 
 			else 
 			{
@@ -83,7 +89,6 @@
 		}
 		
 		public function get_all_pegawai($kode) {
-			//echo($kode);
 			$query = $this->petugas_pelayanan_model->get_pegawai_autocomplete($kode); //query model
 			
 			$pegawai =  array();

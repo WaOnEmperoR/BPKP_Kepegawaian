@@ -26,7 +26,8 @@
 		public function index() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Riwayat Diklat Pegawai";
@@ -47,7 +48,8 @@
 		public function tambah() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Diklat Pegawai";
@@ -80,7 +82,8 @@
 		public function simpan() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$id['ID_Diklat'] = $this->input->post('id');
 				$up['Nama_Pelatihan'] = $this->input->post('nama_pelatihan');
@@ -156,11 +159,11 @@
 		}
 		
 		public function hapus() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				$id_pegawai = $this->uri->segment(3);
 				$id_diklat = $this->uri->segment(4);
 				$this->diklat_model->manualQuery("DELETE FROM diklat WHERE ID_Diklat='$id_diklat'");
-				//echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "pendidikan/index/$id_pegawai'>";
 				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "pegawai/ubah/$id_pegawai'>";
 				} else {
 				header('location:' . base_url());

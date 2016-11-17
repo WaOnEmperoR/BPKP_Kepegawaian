@@ -25,7 +25,8 @@
 		}
 		
 		public function index() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Data Pelayanan";
@@ -42,7 +43,8 @@
 		}
 		
 		public function tambah() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Pelayanan";
@@ -70,7 +72,8 @@
 		}
 		
 		public function simpan() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$id['ID_Pelayanan'] = $this->input->post('id');
 				$up['Nomor_Pelayanan'] = $this->input->post('nomor_pelayanan');
@@ -112,7 +115,8 @@
 		}
 		
 		public function ubah() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Pelayanan";
@@ -162,35 +166,6 @@
 				
 				$d['content_inner_personnel'] = $this->load->view('petugas_pelayanan/view_inner', $d_inner_personnel, true);
 				
-				// $d_inner_diklat['title'] = $this->config->item('nama_aplikasi');
-				// $d_inner_diklat['judul_halaman'] = "Tabel Riwayat Diklat Pegawai";
-				// $d_inner_diklat['breadcumb'] = "Pengolahan Riwayat Diklat";
-				
-				// $d_inner_diklat['riwayat_diklat'] = $this->diklat_model->get_all_diklat_pegawai($d['ID_Pegawai']);
-				
-				// $d_inner_diklat['id_pegawai'] = $d['ID_Pegawai'];
-				
-				// $d['content_inner_diklat'] = $this->load->view('diklat/view_inner', $d_inner_diklat, true);
-				
-				// $d_inner_sertifikasi['title'] = $this->config->item('nama_aplikasi');
-				// $d_inner_sertifikasi['judul_halaman'] = "Tabel Riwayat Sertifikasi Pegawai";
-				// $d_inner_sertifikasi['breadcumb'] = "Pengolahan Riwayat Sertifikasi";
-				
-				// $d_inner_sertifikasi['riwayat_sertifikasi'] = $this->sertifikasi_model->get_all_sertifikasi_pegawai($d['ID_Pegawai']);
-				
-				// $d_inner_sertifikasi['id_pegawai'] = $d['ID_Pegawai'];
-				
-				// $d['content_inner_sertifikasi'] = $this->load->view('sertifikasi/view_inner', $d_inner_sertifikasi, true);
-				
-				// $d_inner_penugasan['title'] = $this->config->item('nama_aplikasi');
-				// $d_inner_penugasan['judul_halaman'] = "Tabel Riwayat Penugasan Pegawai";
-				// $d_inner_penugasan['breadcumb'] = "Pengolahan Riwayat Penugasan";
-				
-				// $d_inner_penugasan['riwayat_penugasan'] = $this->penugasan_model->get_all_penugasan_pegawai($d['ID_Pegawai']);
-				
-				// $d_inner_penugasan['id_pegawai'] = $d['ID_Pegawai'];
-				
-				// $d['content_inner_penugasan'] = $this->load->view('penugasan/view_inner', $d_inner_penugasan, true);
 				$d['list_layanan'] = $this->pelayanan_model->get_jenis_layanan();
 				$d['content'] = $this->load->view('pelayanan/form', $d, true);
 								
@@ -201,7 +176,8 @@
 		}
 		
 		public function hapus() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				$id = $this->uri->segment(3);
 				$this->pegawai_model->manualQuery("DELETE FROM pelayanan WHERE id_pelayanan='$id'");
 				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "pelayanan'>";

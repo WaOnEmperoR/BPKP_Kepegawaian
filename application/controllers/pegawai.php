@@ -18,10 +18,18 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function index() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Data Pegawai";
@@ -37,7 +45,8 @@
 		}
 		
 		public function tambah() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Pegawai";
@@ -63,7 +72,8 @@
 		}
 		
 		public function simpan() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$id['ID_Pegawai'] = $this->input->post('id');
 				$up['Nama_Pegawai'] = $this->input->post('nama');
@@ -92,8 +102,8 @@
 		}
 		
 		public function ubah() {
-			$cek = $this->session->userdata('logged_in');
-			if (!empty($cek)) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Pegawai";
@@ -181,7 +191,8 @@
 		}
 		
 		public function hapus() {
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				$id = $this->uri->segment(3);
 				$this->pegawai_model->manualQuery("DELETE FROM pegawai WHERE id_pegawai='$id'");
 				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "pegawai'>";

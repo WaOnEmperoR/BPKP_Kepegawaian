@@ -29,7 +29,8 @@
 		}
 		
 		public function index() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Data Mitra";
@@ -45,7 +46,8 @@
 		}
 		
 		public function tambah() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Mitra";
@@ -73,7 +75,8 @@
 		}
 		
 		public function simpan() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$id['ID_Mitra'] = $this->input->post('id');
 				$up['Nama_Mitra'] = $this->input->post('nama');
@@ -83,11 +86,6 @@
 				$up['Bidang_Usaha'] = $this->input->post('bidang_usaha');
 				$up['Deskripsi'] = $this->input->post('deskripsi');
 				$up['Kategori_Mitra_ID_Kategori_Mitra'] = $this->input->post('ketegori_mitra');
-				
-				//if(empty($id['ID_Mitra']))
-				//	$id['ID_Mitra'] = 0;
-				
-				//$data = $this->kategori_mitra_model->getSelectedData("kategori_mitra",$id);
 				
 				$data = $this->mitra_model->getSelectedData("mitra",$id);
 				echo($data->num_rows());
@@ -102,8 +100,6 @@
 					$this->mitra_model->insertData("mitra",$up);
 				}
 				
-				//$this->mitra_model->insertData("mitra",$up);
-				//$this->mitra_model->insertDataManual($up);
 				redirect('mitra');
 				} else {
 				header('location:' . base_url());
@@ -111,7 +107,8 @@
 		}
 		
 		public function ubah() {
-			if ($this->ion_auth->is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Mitra";

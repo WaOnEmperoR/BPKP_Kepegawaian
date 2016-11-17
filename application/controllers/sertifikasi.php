@@ -14,12 +14,20 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function index() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if (is_admin() && !empty($id_pegawai)) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Riwayat Sertifikasi Pegawai";
@@ -40,7 +48,8 @@
 		public function tambah() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Sertifikasi Pegawai";
@@ -74,7 +83,8 @@
 		public function simpan() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$id['ID_Sertifikasi'] = $this->input->post('id');
 				$up['Nama_Sertifikasi'] = $this->input->post('nama_sertifikasi');
@@ -103,9 +113,9 @@
 		public function ubah() {
 			$id_pegawai = $this->uri->segment(3);
 			$id_sertifikasi = $this->uri->segment(4);
-			$cek = $this->session->userdata('logged_in');
-			
-			if (!empty($cek) && !empty($id_pegawai) && !empty($id_sertifikasi)) {
+
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai) && !empty($id_sertifikasi)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Detail Sertifikasi Pegawai";

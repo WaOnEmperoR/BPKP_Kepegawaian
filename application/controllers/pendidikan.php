@@ -14,12 +14,20 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function index() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if (is_admin() && !empty($id_pegawai)) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tabel Riwayat Pendidikan Pegawai";
@@ -40,7 +48,8 @@
 		public function tambah() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Tambah Data Pendidikan Pegawai";
@@ -73,7 +82,8 @@
 		public function simpan() {
 			$id_pegawai = $this->uri->segment(3);
 			
-			if (is_admin()) {
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai)) {
 				
 				$id['ID_Pendidikan'] = $this->input->post('id');
 				$up['Nama_Instansi'] = $this->input->post('nama_instansi');
@@ -110,9 +120,9 @@
 		public function ubah() {
 			$id_pegawai = $this->uri->segment(3);
 			$id_pendidikan = $this->uri->segment(4);
-			$cek = $this->session->userdata('logged_in');
-			
-			if (!empty($cek) && !empty($id_pegawai) && !empty($id_pendidikan)) {
+
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group) && !empty($id_pegawai) && !empty($id_pendidikan)) {
 				
 				$d['title'] = $this->config->item('nama_aplikasi');
 				$d['judul_halaman'] = "Ubah Data Detail Pendidikan Pegawai";
@@ -120,8 +130,7 @@
 				
 				$query = "SELECT nama_pegawai FROM Pegawai where ID_Pegawai = ".$id_pegawai;
 				$nama_pegawai = $this->pendidikan_model->manualQuery($query)->row()->nama_pegawai;
-				
-				//$nama_pegawai = $query['nama_pegawai'];
+
 				
 				$data = $this->pendidikan_model->get_detail_pendidikan_pegawai($id_pegawai, $id_pendidikan);
 				if ($data->num_rows() > 0) {
@@ -159,11 +168,12 @@
 		}
 		
 		public function hapus() {
-			if (is_admin()) {
-				$id_pegawai = $this->uri->segment(3);
-				$id_pendidikan = $this->uri->segment(4);
+			$id_pegawai = $this->uri->segment(3);
+			$id_pendidikan = $this->uri->segment(4);
+			$group = array('admin', 'bidang_kepegawaian');
+			if ($this->ion_auth->in_group($group)) {
+				
 				$this->pendidikan_model->manualQuery("DELETE FROM pendidikan WHERE ID_Pendidikan='$id_pendidikan'");
-				//echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "pendidikan/index/$id_pegawai'>";
 				echo "<meta http-equiv='refresh' content='0; url=" . base_url() . "pegawai/ubah/$id_pegawai'>";
 				} else {
 				header('location:' . base_url());

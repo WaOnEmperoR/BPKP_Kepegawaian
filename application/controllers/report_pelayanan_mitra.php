@@ -15,17 +15,26 @@
 			$this->load->library('Datatables');
 			$this->load->library('table');
 			$this->load->database();
+
+			$this->load->library(array('ion_auth','form_validation'));
+			$this->load->helper(array('url','language'));
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
 		}
 		
 		public function index() {
-			$d['title'] = $this->config->item('nama_aplikasi');
-			$d['judul_halaman'] = "Laporan Pelayanan Mitra";
-			$d['breadcumb'] = "Reporting Pelayanan Mitra";
-			$d['list_layanan'] = $this->reporting_model->get_jenis_layanan();
-			
-			$d['content'] = $this->load->view('report_layanan_mitra/form', $d, true);
-			
-			$this->load->view('home', $d);
+			if ($this->ion_auth->logged_in()){
+				$d['title'] = $this->config->item('nama_aplikasi');
+				$d['judul_halaman'] = "Laporan Pelayanan Mitra";
+				$d['breadcumb'] = "Reporting Pelayanan Mitra";
+				$d['list_layanan'] = $this->reporting_model->get_jenis_layanan();
+				
+				$d['content'] = $this->load->view('report_layanan_mitra/form', $d, true);
+				
+				$this->load->view('home', $d);
+			}
 		}
 		
 		public function get_all_mitra($kode) {
