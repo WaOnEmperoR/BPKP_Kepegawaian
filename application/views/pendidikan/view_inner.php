@@ -15,8 +15,9 @@
 							<tr>
 								<th>No</th>
 								<th>Tingkat Pendidikan</th>
-								<th>Nama Instansi</th>
+								<th>Fakultas</th>
 								<th>Jurusan</th>
+								<th>Nama Instansi</th>
 								<th>Nomor Ijazah</th>
 								<th>Tanggal Ijazah</th>
 								<th>Aksi</th>
@@ -30,8 +31,9 @@
 							<tr class="gradeA">
 								<td style="text-align: center"><?php echo $no; ?></td>
 								<td><?php echo $db['Nama_Tingkat_Pendidikan']; ?></td>
+								<td><?php echo $db['Nama_Fakultas'];?></td>
+								<td><?php echo $db['Nama_Jurusan'];?></td>
 								<td><?php echo $db['Nama_Instansi'];?></td>
-								<td><?php echo $db['Jurusan']; ?></td>
 								<td><?php echo $db['Nomor_Ijazah'];?></td>
 								<td><?php echo $db['Tanggal_Ijazah'];?></td>
 								

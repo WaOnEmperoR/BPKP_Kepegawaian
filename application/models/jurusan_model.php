@@ -57,15 +57,11 @@ class Jurusan_Model extends CI_Model
     function get_fakultas_by_tingkat_display($id_tingkat)
     {
         $db = $this->db->query("SELECT * FROM master_fakultas WHERE ID_Tingkat_Pendidikan = $id_tingkat");
-        //echo("SELECT * FROM master_fakultas WHERE ID_Tingkat_Pendidikan = $id_tingkat");
-        //exit();
         return $db->result_array();
     }
 
     function get_tingkat_by_fakultas($id_fakultas)
     {
-        //echo ("SELECT ID_Tingkat_Pendidikan FROM master_fakultas WHERE ID_Fakultas = $id_fakultas");
-        //exit();
         $db = $this->db->query("SELECT ID_Tingkat_Pendidikan FROM master_fakultas WHERE ID_Fakultas = $id_fakultas");
         return $db->row()->ID_Tingkat_Pendidikan;
     }
