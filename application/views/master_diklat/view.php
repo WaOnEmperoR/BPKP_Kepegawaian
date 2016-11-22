@@ -16,32 +16,30 @@
 						</div>
 						<div class="panel-body collapse in">
 							<div class="panel">
-								<a href="<?php echo base_url(); ?>jurusan/tambah"> <button class="btn-primary btn"><i class="fa fa-plus"></i> Tambah</button></a>
+								<a href="<?php echo base_url(); ?>master_diklat/tambah"> <button class="btn-primary btn"><i class="fa fa-plus"></i> Tambah</button></a>
 							</div>
 							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
 								<thead>
 									<tr>
 										<th>No</th>
-                                        <th>Tingkat Pendidikan</th>
-										<th>Nama Fakultas</th>
-										<th>Nama Jurusan</th>
-										<th>Keterangan Jurusan</th>
+										<th>Jenis Diklat</th>
+										<th>Nama Diklat</th>
+										<th>Keterangan Diklat</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
 										$no=1;
-										foreach ($all_jurusan as $db) :
+										foreach ($all_jenis_diklat as $db) :
 										?>
 									<tr class="gradeA">
 										<td style="text-align: center"><?php echo $no; ?></td>
-                                        <td><?php echo $db['Nama_Tingkat_Pendidikan']; ?></td>
-										<td><?php echo $db['Nama_Fakultas']; ?></td>
-										<td><?php echo $db['Nama_Jurusan'];?></td>
-										<td><?php echo $db['Keterangan_Jurusan'];?></td>
-										<td align="center"><a href="<?php echo base_url(); ?>jurusan/ubah/<?php echo $db['ID_Jurusan']; ?>"><button class="btn-orange btn-sm" title="ubah"><i class="fa fa-edit"></i> Ubah</button>
-											| <a href="<?php echo base_url(); ?>jurusan/hapus/<?php echo $db['ID_Jurusan']; ?>"> <button class="btn-danger btn-sm" title="hapus" onClick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i> Hapus</button> </a>
+										<td><?php echo $db['Nama_Jenis_Diklat']; ?></td>
+										<td><?php echo $db['Nama_Diklat']; ?></td>
+										<td><?php echo $db['Keterangan_Diklat'];?></td>
+										<td align="center"><a href="<?php echo base_url(); ?>master_diklat/ubah/<?php echo $db['ID_Diklat']; ?>"><button class="btn-orange btn-sm" title="ubah"><i class="fa fa-edit"></i> Ubah</button>
+											| <a href="<?php echo base_url(); ?>master_diklat/hapus/<?php echo $db['ID_Diklat']; ?>"> <button class="btn-danger btn-sm" title="hapus" onClick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i> Hapus</button> </a>
 										</td>
 									</tr>
 									<?php

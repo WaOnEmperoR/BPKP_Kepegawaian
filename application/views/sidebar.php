@@ -19,6 +19,7 @@
 				<li><a href="<?php echo base_url(); ?>jurusan"><i class="fa fa-cogs "></i> <span>Master Jurusan</span></a></li>
 				<li class="divider"></li>
 				<li><a href="<?php echo base_url(); ?>jenis_diklat"><i class="fa fa-map-pin"></i> <span>Master Jenis Diklat</span></a></li>
+				<li><a href="<?php echo base_url(); ?>master_diklat"><i class="fa fa-inbox"></i> <span>Master Diklat</span></a></li>
 				<li class="divider"></li>
 				<li><a href="<?php echo base_url(); ?>jenis_sertifikasi"><i class="fa fa-certificate"></i> <span>Master Jenis Sertifikasi</span></a></li>
 				<li><a href="<?php echo base_url(); ?>master_sertifikasi"><i class="fa fa-book"></i> <span>Master Sertifikasi</span></a></li>

@@ -25,7 +25,6 @@
 								<input type="text" class="form-control" name="nama_pegawai" value="<?php echo $Nama_Pegawai; ?>" autofocus="true" disabled>
 							</div>
 						</div>
-						
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Jenis Sertifikasi</label>
 							<div class="col-sm-6">
@@ -46,13 +45,27 @@
 								</select>
 							</div>
 						</div>
-						
 						<div class="form-group">
-							<label class="col-sm-3 control-label">Nama Sertifikasi </label>
+							<label class="col-sm-3 control-label">Nama Sertifikasi</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" name="nama_sertifikasi" value="<?php echo $Nama_Sertifikasi; ?>" autofocus="true">
+								<select name="id_master_sertifikasi" id="id_master_sertifikasi" class="form-control" style="width: 200px;">
+								<option>--Pilih Sertifikasi--</option>
+								<?php 
+									foreach ($list_master_sertifikasi as $lms)
+									{
+										$id_lms = $lms['ID_Sertifikasi'];
+										$nama_lms = $lms['Nama_Sertifikasi'];
+										echo "<option value = $id_lms ";
+										if ($id_lms == $ID_Master_Sertifikasi)
+										{
+											echo "selected = 'selected' ";
+										}
+										echo("> $nama_lms </option>");
+									}
+									?>
+								</select>
 							</div>
-						</div>
+                  		</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Lembaga Penyelenggara </label>
 							<div class="col-sm-6">
@@ -102,5 +115,18 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#tanggal_sertifikat').datepicker({ format: 'dd-mm-yyyy' });
+
+		var dasar = '<?php echo(base_url());?>';
+
+		$("#jenis_sertifikasi").change(function() {
+			var jenis = $("#jenis_sertifikasi").val();
+			$.ajax({
+				type: "post",
+				url: dasar + "sertifikasi/getSertifikasiByJenis/" + jenis,
+				success: function(data) {
+					$("#id_master_sertifikasi").html(data);
+				}
+			});
+		});
 	});
 </script>
