@@ -30,7 +30,7 @@
 							<tr class="gradeA">
 								<td style="text-align: center"><?php echo $no; ?></td>
 								<td><?php echo $db['Nama_Jenis_Diklat']; ?></td>
-								<td><?php echo $db['Nama_Pelatihan'];?></td>
+								<td><?php echo $db['Nama_Diklat']; ?></td>
 								<td><?php echo $db['Lembaga_Penyelenggara']; ?></td>
 								<td><?php echo $db['No_Sertifikat'];?></td>
 								<td><?php echo $db['Tanggal_Sertifikat'];?></td>

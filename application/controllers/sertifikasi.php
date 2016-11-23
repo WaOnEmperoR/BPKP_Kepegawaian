@@ -49,7 +49,7 @@ class Sertifikasi extends CI_Controller
             
             $d['id_pegawai'] = $id_pegawai;
             
-            $d['content'] = $this->load->view('pendidikan/view', $d, true);
+            $d['content'] = $this->load->view('sertifikasi/view', $d, true);
             
             $this->load->view('home', $d);
         } else {
