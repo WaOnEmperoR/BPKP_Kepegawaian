@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Aplikasi BPKP Perwakilan Provinsi Maluku">
-<meta name="author" content="iOTENTIK">
+<meta name="author" content="WaOnEmperoR">
 <link href="<?php echo base_url(); ?>assets/img/BPKP.png" rel="SHORTCUT ICON" />
 
 <!-- <link href="assets/less/styles.less" rel="stylesheet/less" media="all">  -->
@@ -32,6 +32,8 @@
 <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/plugins/datatables/dataTables.css' />
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/css/sweetalert.css">
 <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/css/morris.css">
+<link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/css/select2.min.css">
+<link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>assets/css/query-builder.default.min.css">
 
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js'></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/less.js"></script>
@@ -45,29 +47,25 @@
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.cookie.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.nicescroll.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.priceformat.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/placeholdr.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/application.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.numeric.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/query-builder.standalone.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/datatables/jquery.dataTables.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/select2/select2.full.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/codeprettifier/prettify.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/easypiechart/jquery.easypiechart.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/sparklines/jquery.sparklines.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-toggle/toggle.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/datatables/jquery.dataTables.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/quicksearch/jquery.quicksearch.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-select2/select2.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-autosize/jquery.autosize-min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-colorpicker/js/bootstrap-colorpicker.min.js'></script>
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/quicksearch/jquery.quicksearch.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/jqueryui-timepicker/jquery.ui.timepicker.min.js'></script>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'></script>
-<!--<script type='text/javascript' src='--><?php //echo base_url(); ?><!--assets/plugins/form-fseditor/jquery.fseditor-min.js'></script>-->
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-jasnyupload/fileinput.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/placeholdr.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/application.js'></script>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.numeric.min.js'></script>
-<!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
-<!--<script type='text/javascript' src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.js'></script>
-
 
 
 <script type="text/javascript">
@@ -77,7 +75,7 @@
         $(".datepicker").datepicker({format: 'yyyy-mm-dd'});
         $("input.numeric").numeric();
 		$('#example').DataTable();
-        
+  
     });
 </script>
 
