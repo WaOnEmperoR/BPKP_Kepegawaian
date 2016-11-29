@@ -34,44 +34,90 @@ class Queryselect_Model extends CI_Model
         return $this->db->query($q);
     }
     
-    function get_diklat_by_jenis($id_jenis)
+    function get_fakultas()
     {
-        $db = $this->db->query("SELECT * FROM master_diklat WHERE ID_Jenis_Diklat = $id_jenis");
-        return $db;
+        $db         = $this->db->query("SELECT * FROM master_fakultas ");
+        $pre_result = $db->result_array();
+        
+        return $pre_result;
     }
     
-    function get_diklat_by_jenis_display($id_jenis)
+    function get_jurusan($id_fakultas)
     {
-        $db = $this->db->query("SELECT * FROM master_diklat WHERE ID_Jenis_Diklat = $id_jenis");
-        return $db->result_array();
+        $db     = $this->db->query("SELECT * FROM master_jurusan WHERE ID_Fakultas=$id_fakultas");
+        $result = $db->result_array();
+        
+        return $result;
     }
     
-    function get_all_diklat_pegawai($id_pegawai)
+    function get_list_fak_jur()
     {
-        $db = $this->db->query("SELECT d.ID_Diklat, jd.Nama_Jenis_Diklat, md.Nama_Diklat, d.Lembaga_Penyelenggara, d.No_Sertifikat, DATE_FORMAT(d.Tanggal_Sertifikat, '%d %M %Y') AS Tanggal_Sertifikat, d.Jenis_Diklat_ID_Jenis_Diklat, d.Master_Diklat_ID_Diklat, d.Pegawai_ID_Pegawai
-				FROM diklat d, jenis_diklat jd, master_diklat md
-				WHERE d.Pegawai_ID_Pegawai=$id_pegawai AND d.Master_Diklat_ID_Diklat=md.ID_diklat AND
-				md.ID_Jenis_diklat = jd.ID_Jenis_diklat");
-        return $db->result_array();
+        $db         = $this->db->query("SELECT * FROM master_fakultas ");
+        $pre_result = $db->result_array();
+        
+        $data = array();
+        
+        $i = 0;
+        foreach ($pre_result as $hasil) {
+            $data[$hasil['Nama_Fakultas']] = array();
+            
+            $db2       = $this->db->query("SELECT * FROM master_jurusan WHERE ID_Fakultas=" . $hasil['ID_Fakultas']);
+            $inner_res = $db2->result_array();
+            
+            $subjur = array();
+            
+            $j = 0;
+            if (count($inner_res) > 0) {
+                foreach ($inner_res as $s) {
+                    array_push($subjur, $s['Nama_Jurusan']);
+                    $j++;
+                }
+            }
+            
+            $data[$hasil['Nama_Fakultas']] = $subjur;
+            
+            $i++;
+        }
+        
+        return $data;
     }
     
-    function get_detail_diklat_pegawai($id_pegawai, $id_diklat)
+    function get_fakultas_and_jurusan($json_bool)
     {
-        $db = $this->db->query("SELECT d.ID_Diklat, jd.Nama_Jenis_Diklat, md.Nama_Diklat, d.Lembaga_Penyelenggara, d.No_Sertifikat, DATE_FORMAT(d.Tanggal_Sertifikat, '%d %M %Y') AS Tanggal_Sertifikat, d.Jenis_Diklat_ID_Jenis_Diklat, d.Master_Diklat_ID_Diklat, d.Pegawai_ID_Pegawai
-				FROM diklat d, jenis_diklat jd, master_diklat md
-				WHERE d.Pegawai_ID_Pegawai=1 AND d.Master_Diklat_ID_Diklat=md.ID_diklat AND
-			md.ID_Jenis_diklat = jd.ID_Jenis_diklat AND d.id_diklat=$id_diklat");
-        return $db;
-        //return $db->result_array();
+        $db         = $this->db->query("SELECT * FROM master_fakultas ");
+        $pre_result = $db->result_array();
+        
+        $data = array();
+        
+        $i = 0;
+        foreach ($pre_result as $hasil) {
+            $arr_fakultas = array(
+                'id' => $hasil['ID_Fakultas'],
+                'text' => $hasil['Nama_Fakultas']
+            );
+            $data[$i]     = $arr_fakultas;
+            
+            $db2       = $this->db->query("SELECT * FROM master_jurusan WHERE ID_Fakultas=" . $hasil['ID_Fakultas']);
+            $inner_res = $db2->result_array();
+            
+            $j = 0;
+            if (count($inner_res) > 0) {
+                foreach ($inner_res as $s) {
+                    $data[$i]['children'][$j]['id']   = $s['ID_Jurusan'];
+                    $data[$i]['children'][$j]['text'] = $s['Nama_Jurusan'];
+                    $j++;
+                }
+            }
+            $i++;
+        }
+        
+        if ($json_bool == 1) {
+            $kembali = json_encode($data);
+        } else {
+            $kembali = $data;
+        }
+        return $kembali;
     }
-    
-    function get_jenis_diklat()
-    {
-        $db = $this->db->query("SELECT * FROM jenis_diklat ");
-        return $db->result_array();
-    }
-
-    
 }
 
 /* End of file lampiran_model.php */
