@@ -51,6 +51,25 @@ class Queryselect extends CI_Controller
         echo ($list_fakjur);
     }
     
+    public function get_params()
+    {
+        if ($this->input->post('result_fakjur')){
+            $fakjur = $this->input->post('result_fakjur');
+            print_r($fakjur);
+
+            $gabung_fakjur = implode(",", $fakjur);
+            echo($gabung_fakjur);
+        }
+        if ($this->input->post('result_diklat')){
+            $diklat = $this->input->post('result_diklat');
+            print_r($diklat);
+        }
+        if ($this->input->post('result_sertifikat')){
+            $sertifikat = $this->input->post('result_sertifikat');
+            print_r($sertifikat);
+        }
+    }
+
     public function getJSONSertifikasi()
     {
         $list_sertifikasi = $this->queryselect_model->get_sertifikasi(1);

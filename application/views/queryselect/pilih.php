@@ -24,7 +24,7 @@
                     </h4>
                 </div>
                 <div class="panel-body collapse in">
-                    <form class="well form-horizontal" action="<?php echo base_url(); ?>queryselect/get_params" method="post"  id="report_form">
+                    <form id="form_pilih" class="well form-horizontal" action="<?php echo base_url(); ?>queryselect/get_params" method="post"  id="report_form">
                         <div class="form-group">
                             <label for="fakjur">Jurusan</label>
                             <select id="js-fakjur" multiple="multiple" class="form-control">
@@ -52,6 +52,8 @@
                                 <button type="submit" class="btn btn-warning" >CARI PEGAWAI <span class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </div>
+
+                        <input type="hidden" name="result_jurusan[]"/>
                     </form>
                 </div>
             </div>
@@ -139,6 +141,30 @@
     });
 
     function getValue() {
-        alert("Selected value is: " + $("#js-fakjur").select2("val"));
+        //alert("Selected value is: " + $("#js-fakjur").select2("val"));
+
+        var panjang_fakjur = $("#js-fakjur").select2("val").length;
+        for (i=0; i<panjang_fakjur; i++)
+        {
+            alert($("#js-fakjur").select2("val")[i]);
+            var tampil = '<input type="hidden" name="result_fakjur[]" value="' + $("#js-fakjur").select2("val")[i] + '">'
+            $("#form_pilih").append(tampil);
+        }
+
+        var panjang_diklat = $("#js-diklat").select2("val").length;
+        for (i=0; i<panjang_diklat; i++)
+        {
+            alert($("#js-diklat").select2("val")[i]);
+            var tampil = '<input type="hidden" name="result_diklat[]" value="' + $("#js-diklat").select2("val")[i] + '">'
+            $("#form_pilih").append(tampil);
+        }
+
+        var panjang_sertifikat = $("#js-sertifikasi").select2("val").length;
+        for (i=0; i<panjang_sertifikat; i++)
+        {
+            alert($("#js-sertifikasi").select2("val")[i]);
+            var tampil = '<input type="hidden" name="result_sertifikat[]" value="' + $("#js-sertifikasi").select2("val")[i] + '">'
+            $("#form_pilih").append(tampil);
+        }
     }
 </script>
