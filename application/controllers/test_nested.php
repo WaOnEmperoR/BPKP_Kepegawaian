@@ -66,6 +66,48 @@ class Test_nested extends CI_Controller
         }
         
         print_r($fakjur);
+
+        echo("<br/>");
+
+        $list=array();
+        $list[0]=array();
+        $list[1]=array();
+        $list[2]=array();
+
+        $sublist = array("NIP" => 123, "NIK" => 456);
+
+        $list[0]=$sublist;
+
+        print_r($list);
+
+
+        echo("<br/>");
+
+        var_dump($list);
+        echo("<br/>");
+
+        foreach ($list as $key => $value) {
+            echo ($key);
+            echo ("<br/>");
+            foreach ($value as $subkey => $subvalue) {
+                echo ($subkey."-" . $subvalue);
+                echo ('<br/>');
+            }
+        }
+
+        $str = 'array(0 => array("a","b"), 1 => array("c","d"))';
+
+        eval('$var=' . $str . ';');
+        print_r($var);
+
+        foreach ($var as $key => $value) {
+            echo ($key);
+            echo ("<br/>");
+            foreach ($value as $subkey => $subvalue) {
+                echo ($subkey."-" . $subvalue);
+                echo ('<br/>');
+            }
+        }
     }
     
 }

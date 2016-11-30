@@ -122,7 +122,6 @@ class Diklat extends CI_Controller
                 $this->diklat_model->insertData("diklat", $up);
             }
             
-            //redirect('pendidikan/index/'.$id_pegawai);
             redirect('pegawai/ubah/' . $id_pegawai);
         } else {
             header('location:' . base_url());

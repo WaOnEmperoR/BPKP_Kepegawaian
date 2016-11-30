@@ -37,12 +37,6 @@ class Queryselect extends CI_Controller
             $d['judul_halaman'] = "Pencarian";
             $d['breadcumb']     = "Pencarian Berdasarkan Pilihan";
             
-            $d['list_fakultas'] = $this->queryselect_model->get_fakultas();
-            $d['list_fakjur']   = $this->queryselect_model->get_list_fak_jur();
-            
-            //print_r($d['list_fakultas_and_jurusan']);
-            //exit();
-            
             $d['content'] = $this->load->view('queryselect/pilih', $d, true);
             
             $this->load->view('home', $d);
@@ -51,29 +45,22 @@ class Queryselect extends CI_Controller
         }
     }
     
-    public function get_list_fakjur()
+    public function getJSONFakjur()
     {
-        $list_fakjur = $this->queryselect_model->get_list_fak_jur();
-        foreach ($list_fakjur as $key => $value) {
-            echo ($key);
-            echo ("<br/>");
-            foreach ($value as $subval) {
-                echo ('----' . $subval);
-                echo ('<br/>');
-            }
-        }
+        $list_fakjur = $this->queryselect_model->get_fakultas_and_jurusan(1);
+        echo ($list_fakjur);
     }
     
-    public function get_fakultas_all()
+    public function getJSONSertifikasi()
     {
-        $hasil = $this->queryselect_model->get_fakultas();
-        print_r($hasil);
+        $list_sertifikasi = $this->queryselect_model->get_sertifikasi(1);
+        echo ($list_sertifikasi);
     }
     
-    public function get_jurusan_by_fakultas($id_fakultas)
+    public function getJSONDiklat()
     {
-        $hasil = $this->queryselect_model->get_jurusan($id_fakultas);
-        print_r($hasil);
+        $list_diklat = $this->queryselect_model->get_diklat(1);
+        echo ($list_diklat);
     }
     
 }
