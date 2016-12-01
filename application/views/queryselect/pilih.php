@@ -30,30 +30,24 @@
                             <select id="js-fakjur" multiple="multiple" class="form-control">
                             </select>
                         </div>
-                        <br/>
                         <div class="form-group">
                             <label for="diklat">Diklat</label>
                             <select id="js-diklat" multiple="multiple" class="form-control">
                             </select>
                         </div>
-                        <br/>
                         <div class="form-group">
                             <label for="sertifikasi">Sertifikasi</label>
                             <select id="js-sertifikasi" multiple="multiple" class="form-control">
                             </select>
                         </div>
                         <br/>
-                        <button  type="button" id="btn_coba" onclick=getValue();>Tekan Saya</button>
                         <br/>
-                        <!-- Button -->
                         <div class="form-group">
                             <label class="col-md-4 control-label"></label>
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-warning" >CARI PEGAWAI <span class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </div>
-
-                        <input type="hidden" name="result_jurusan[]"/>
                     </form>
                 </div>
             </div>
@@ -63,55 +57,8 @@
     <!--wrap -->
 </div>
 <!-- page-content -->
-
 <script type="text/javascript">
     $(document).on("ready", function() {
-        var list_2 = [{
-            id: "1",
-            text: "TEKNIK",
-            children: [{
-                id: "4",
-                text: "Teknik Mesin"
-            }, {
-                id: "5",
-                text: "Teknik Sipil"
-            }]
-        }, {
-            id: "2",
-            text: "KEDOKTERAN",
-            children: [{
-                id: "6",
-                text: "Kedokteran Umum"
-            }]
-        }, {
-            id: "3",
-            text: "KOMPUTER",
-            children: [{
-                id: "2",
-                text: "Teknik Informatika"
-            }, {
-                id: "3",
-                text: "Teknik Komputer"
-            }]
-        }, {
-            id: "4",
-            text: "EKONOMI"
-        }, {
-            id: "5",
-            text: "IPA",
-            children: [{
-                id: "7",
-                text: "IPA"
-            }]
-        }, {
-            id: "6",
-            text: "IPS",
-            children: [{
-                id: "8",
-                text: "IPS"
-            }]
-        }];
-
         var url = '<?php echo (base_url());?>queryselect/getJSONFakjur';
         $.get(url, function(data) {
             var parsed = JSON.parse(data);
@@ -136,32 +83,29 @@
             });
         });
 
-        var JSON_str = '[{"id":"1","text":"TEKNIK","children":[{"id":"4","text":"Teknik Mesin"},{"id":"5","text":"Teknik Sipil"}]},{"id":"2","text":"KEDOKTERAN","children":[{"id":"6","text":"Kedokteran Umum"}]},{"id":"3","text":"KOMPUTER","children":[{"id":"2","text":"Teknik Informatika"},{"id":"3","text":"Teknik Komputer"}]},{"id":"4","text":"EKONOMI"},{"id":"5","text":"IPA","children":[{"id":"7","text":"IPA"}]},{"id":"6","text":"IPS","children":[{"id":"8","text":"IPS"}]}]';
+    });
 
+    $('#form_pilih').submit(function() {
+        getValue();
     });
 
     function getValue() {
-        //alert("Selected value is: " + $("#js-fakjur").select2("val"));
-
         var panjang_fakjur = $("#js-fakjur").select2("val").length;
-        for (i=0; i<panjang_fakjur; i++)
-        {
+        for (i = 0; i < panjang_fakjur; i++) {
             alert($("#js-fakjur").select2("val")[i]);
             var tampil = '<input type="hidden" name="result_fakjur[]" value="' + $("#js-fakjur").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
 
         var panjang_diklat = $("#js-diklat").select2("val").length;
-        for (i=0; i<panjang_diklat; i++)
-        {
+        for (i = 0; i < panjang_diklat; i++) {
             alert($("#js-diklat").select2("val")[i]);
             var tampil = '<input type="hidden" name="result_diklat[]" value="' + $("#js-diklat").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
 
         var panjang_sertifikat = $("#js-sertifikasi").select2("val").length;
-        for (i=0; i<panjang_sertifikat; i++)
-        {
+        for (i = 0; i < panjang_sertifikat; i++) {
             alert($("#js-sertifikasi").select2("val")[i]);
             var tampil = '<input type="hidden" name="result_sertifikat[]" value="' + $("#js-sertifikasi").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
