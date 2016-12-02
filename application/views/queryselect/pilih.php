@@ -24,7 +24,7 @@
                     </h4>
                 </div>
                 <div class="panel-body collapse in">
-                    <form id="form_pilih" class="well form-horizontal" action="<?php echo base_url(); ?>queryselect/get_params" method="post"  id="report_form">
+                    <form id="form_pilih" class="well form-horizontal" action="<?php echo base_url(); ?>queryselect" method="post"  id="report_form">
                         <div class="form-group">
                             <label for="fakjur">Jurusan</label>
                             <select id="js-fakjur" multiple="multiple" class="form-control">
@@ -49,6 +49,37 @@
                             </div>
                         </div>
                     </form>
+                    <div class="panel-body collapse in">
+                        <button id="Tes" onClick="setValueFakjur();">COBA</button>
+                        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Pegawai</th>
+                                    <th>NIP</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Jenis Kelamin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $no=1;
+                                    foreach ($list_orang as $db) :
+                                    ?>
+                                <tr class="gradeA">
+                                    <td style="text-align: center"><?php echo $no; ?></td>
+                                    <td><?php echo $db['Nama_Pegawai']; ?></td>
+                                    <td><?php echo $db['NIP']; ?></td>
+                                    <td><?php echo $db['Tanggal_Lahir']; ?></td>
+                                    <td><?php echo $db['Jenis_Kelamin'];?></td>
+                                </tr>
+                                <?php
+                                    $no++;
+                                    endforeach;
+                                    ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,23 +123,35 @@
     function getValue() {
         var panjang_fakjur = $("#js-fakjur").select2("val").length;
         for (i = 0; i < panjang_fakjur; i++) {
-            alert($("#js-fakjur").select2("val")[i]);
             var tampil = '<input type="hidden" name="result_fakjur[]" value="' + $("#js-fakjur").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
 
         var panjang_diklat = $("#js-diklat").select2("val").length;
         for (i = 0; i < panjang_diklat; i++) {
-            alert($("#js-diklat").select2("val")[i]);
             var tampil = '<input type="hidden" name="result_diklat[]" value="' + $("#js-diklat").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
 
         var panjang_sertifikat = $("#js-sertifikasi").select2("val").length;
         for (i = 0; i < panjang_sertifikat; i++) {
-            alert($("#js-sertifikasi").select2("val")[i]);
             var tampil = '<input type="hidden" name="result_sertifikat[]" value="' + $("#js-sertifikasi").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
+    }
+
+    function setValueFakjur()
+    {
+        $("#js-fakjur").val(["1","2","3"]).trigger("change");
+    }
+
+    function setValueDiklat(data)
+    {
+
+    }
+
+    function setValueSertifikasi(data)
+    {
+        
     }
 </script>
