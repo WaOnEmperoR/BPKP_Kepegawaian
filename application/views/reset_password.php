@@ -43,20 +43,35 @@
         <div class="panel-body">
             <h4 class="text-center" style="margin-bottom: 25px;">Silahkan Login</h4>
             <!-- <?php echo form_open("login/index");?> -->
-            <form method="post" action="<?php echo base_url(); ?>login/index" class="form-horizontal" style="margin-bottom: 0px !important;">
+            <h1><?php echo lang('reset_password_heading');?></h1>
+            <p><?php //echo sprintf(lang('reset_password_subheading'), $identity_label);?></p>
+
+
+
+
+            <?php echo form_open('login/reset_password/' . $code);?>
+            <?php echo form_input($user_id);?>
+            <?php echo form_hidden($csrf); ?>
+
                 <div class="form-group">
                     <div class="col-sm-12">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <?php echo form_input($username,set_value('username')); ?>
+                            <p>
+                                <label for="new_password"><?php echo sprintf(lang('reset_password_new_password_label'), $min_password_length);?></label> <br />
+                                <?php echo form_input($new_password);?>
+                            </p>
                         </div>
                     </div>
                 </div>
+             
+
                 <div class="form-group">
                     <div class="col-sm-12">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <?php echo form_input($password); ?>
+                            <p>
+                                <?php echo lang('reset_password_new_password_confirm_label', 'new_password_confirm');?> <br />
+                                <?php echo form_input($new_password_confirm);?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -65,12 +80,6 @@
                     <div class="col-sm-12">
                         <div class="input-group">    
                             <div id="infoMessage"><b><font color="red"><?php echo $message;?></font></b></div>
-                            <?php echo lang('login_remember_label', 'remember');?>
-                            <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-                            <p>
-                                <a href="login/forgot_password"><?php echo lang('login_forgot_password');?></a>
-                            </p>
-                            
                         </div>
                     </div>
                 </div>
@@ -82,13 +91,10 @@
         <div class="panel-footer">
 
             <div class="pull-right">
-                <a id="reset" class="btn btn-default">Reset</a>
-                <?php echo form_button($submit,'Login');?>
-                <!-- <?php echo form_submit('submit', lang('login_submit_btn'));?> -->
+                <p><?php echo form_submit('submit', lang('reset_password_submit_btn'));?></p>
             </div>
         </div>
-        </form>
-        <!-- <?php echo form_close();?> -->
+        <?php echo form_close();?> 
     </div>
 </div>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js'></script>

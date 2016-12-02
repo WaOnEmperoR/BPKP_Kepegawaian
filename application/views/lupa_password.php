@@ -43,34 +43,29 @@
         <div class="panel-body">
             <h4 class="text-center" style="margin-bottom: 25px;">Silahkan Login</h4>
             <!-- <?php echo form_open("login/index");?> -->
-            <form method="post" action="<?php echo base_url(); ?>login/index" class="form-horizontal" style="margin-bottom: 0px !important;">
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <?php echo form_input($username,set_value('username')); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <?php echo form_input($password); ?>
-                        </div>
-                    </div>
-                </div>
+            <h1><?php echo lang('forgot_password_heading');?></h1>
+            <p><?php echo sprintf(lang('forgot_password_subheading'), $identity_label);?></p>
 
+            <div id="infoMessage"><?php echo $message;?></div>
+
+            <?php echo form_open("login/forgot_password");?>
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                          <p>
+                            <label for="identity"><?php echo (($type=='email') ? sprintf(lang('forgot_password_email_label'), $identity_label) : sprintf(lang('forgot_password_identity_label'), $identity_label));?></label> <br />
+                            <?php echo form_input($identity);?>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+             
                 <div class="form-group">
                     <div class="col-sm-12">
                         <div class="input-group">    
                             <div id="infoMessage"><b><font color="red"><?php echo $message;?></font></b></div>
-                            <?php echo lang('login_remember_label', 'remember');?>
-                            <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-                            <p>
-                                <a href="login/forgot_password"><?php echo lang('login_forgot_password');?></a>
-                            </p>
-                            
                         </div>
                     </div>
                 </div>
@@ -82,13 +77,10 @@
         <div class="panel-footer">
 
             <div class="pull-right">
-                <a id="reset" class="btn btn-default">Reset</a>
-                <?php echo form_button($submit,'Login');?>
-                <!-- <?php echo form_submit('submit', lang('login_submit_btn'));?> -->
+                <p><?php echo form_submit('submit', lang('forgot_password_submit_btn'));?></p>
             </div>
         </div>
-        </form>
-        <!-- <?php echo form_close();?> -->
+        <?php echo form_close();?> 
     </div>
 </div>
 <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js'></script>
