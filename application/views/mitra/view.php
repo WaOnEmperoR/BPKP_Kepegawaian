@@ -90,10 +90,6 @@
 		} );
 		
 		
-		// DataTable
-		var table = $('#example').DataTable();
-		
-		
 		// Apply the filter
 		$("#example thead input").on( 'keyup change', function () {
 			table.column( ($(this).parent().index() + 1) +':visible' )

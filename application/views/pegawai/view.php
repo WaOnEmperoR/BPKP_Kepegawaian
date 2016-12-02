@@ -99,9 +99,6 @@
 			$(this).html( '<input type="text" class="form-control" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
 		} );
 		
-		// DataTable
-		var table = $('#example').DataTable();
-		
 		// Apply the filter
 		$("#example thead input").on( 'keyup change', function () {
 			table.column( ($(this).parent().index() + 1) +':visible' )

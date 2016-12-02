@@ -24,6 +24,7 @@
                     </h4>
                 </div>
                 <div class="panel-body collapse in">
+                    <!--<button id="Tes" onClick="getValue();">COBA</button>-->
                     <form id="form_pilih" class="well form-horizontal" action="<?php echo base_url(); ?>queryselect" method="post"  id="report_form">
                         <div class="form-group">
                             <label for="fakjur">Jurusan</label>
@@ -50,8 +51,11 @@
                         </div>
                     </form>
                     <div class="panel-body collapse in">
-                        <button id="Tes" onClick="setValueFakjur();">COBA</button>
-                        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
+                        <div>
+                            <?php echo($filter_kompetensi);?>
+                        </div>
+                        <!--<button id="Tes" onClick="setValueFakjur();">COBA</button>-->
+                        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -121,37 +125,26 @@
     });
 
     function getValue() {
-        var panjang_fakjur = $("#js-fakjur").select2("val").length;
+        var panjang_fakjur = ($("#js-fakjur").select2("val") == null) ? 0 : $("#js-fakjur").select2("val").length;
         for (i = 0; i < panjang_fakjur; i++) {
             var tampil = '<input type="hidden" name="result_fakjur[]" value="' + $("#js-fakjur").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
 
-        var panjang_diklat = $("#js-diklat").select2("val").length;
+        var panjang_diklat = ($("#js-diklat").select2("val") == null) ? 0 : $("#js-diklat").select2("val").length;
         for (i = 0; i < panjang_diklat; i++) {
             var tampil = '<input type="hidden" name="result_diklat[]" value="' + $("#js-diklat").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
 
-        var panjang_sertifikat = $("#js-sertifikasi").select2("val").length;
+        var panjang_sertifikat = ($("#js-sertifikasi").select2("val") == null) ? 0 : $("#js-sertifikasi").select2("val").length;
         for (i = 0; i < panjang_sertifikat; i++) {
             var tampil = '<input type="hidden" name="result_sertifikat[]" value="' + $("#js-sertifikasi").select2("val")[i] + '">'
             $("#form_pilih").append(tampil);
         }
     }
 
-    function setValueFakjur()
-    {
-        $("#js-fakjur").val(["1","2","3"]).trigger("change");
-    }
-
-    function setValueDiklat(data)
-    {
-
-    }
-
-    function setValueSertifikasi(data)
-    {
-        
+    function setValueFakjur() {
+        $("#js-fakjur").val(["1", "2", "3"]).trigger("change");
     }
 </script>
