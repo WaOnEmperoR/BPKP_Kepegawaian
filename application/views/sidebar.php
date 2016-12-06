@@ -59,6 +59,12 @@
 				<li><a href="<?php echo base_url(); ?>report_pelayanan_mitra"><i class="fa fa-check-square"></i> <span>Laporan Pelayanan Mitra</span></a></li>
 			</ul>
 		</li>
+		<li>
+			<a href="javascript:;"><i class="fa fa-search-plus"></i> <span>Pencarian</span> </a>
+			<ul class="acc-menu">
+				<li><a href="<?php echo base_url(); ?>queryselect"><i class="fa fa-check-square"></i> <span>Pegawai Berdasarkan Kompetensi</span></a></li>
+			</ul>
+		</li>
 		<li class="divider"></li>
 		<li><a href="<?php echo base_url(); ?>login/logout"> <i class="fa fa-sign-out"></i> <span>Logout</span></a>
 	</ul>
