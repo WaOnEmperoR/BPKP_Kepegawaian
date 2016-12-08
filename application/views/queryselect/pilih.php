@@ -54,7 +54,6 @@
                         <div>
                             <?php echo($filter_kompetensi);?>
                         </div>
-                        <!--<button id="Tes" onClick="setValueFakjur();">COBA</button>-->
                         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
                             <thead>
                                 <tr>
@@ -63,6 +62,7 @@
                                     <th>NIP</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
+                                    <th>Agama</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,7 +75,39 @@
                                     <td><?php echo $db['Nama_Pegawai']; ?></td>
                                     <td><?php echo $db['NIP']; ?></td>
                                     <td><?php echo $db['Tanggal_Lahir']; ?></td>
-                                    <td><?php echo $db['Jenis_Kelamin'];?></td>
+                                    <td><?php 
+                                        if ($db['Jenis_Kelamin']=="L")
+                                        {
+                                            echo("Laki-laki");
+                                        }
+                                        elseif ($db['Jenis_Kelamin']=="P")
+                                        {
+                                            echo("Perempuan");
+                                        }?>
+                                    </td>
+                                    <td><?php 
+                                        if ($db['Agama']=="I")
+                                        {
+                                            echo("Islam");
+                                        }
+                                        elseif ($db['Agama']=="KK")
+                                        {
+                                            echo("Kristen Katolik");
+                                        }
+                                        elseif ($db['Agama']=="KP")
+                                        {
+                                            echo("Kristen Protestan");
+                                        }
+                                        elseif ($db['Agama']=="H")
+                                        {
+                                            echo("Hindu");
+                                        }
+                                        elseif ($db['Agama']=="B")
+                                        {
+                                            echo("Buddha");
+                                        }
+                                        ?>
+                                    </td>
                                 </tr>
                                 <?php
                                     $no++;
