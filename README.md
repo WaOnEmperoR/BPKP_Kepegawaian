@@ -10,3 +10,4 @@ Features :
 7. MorrisJS for Graph
 8. Bootstrap Carousel
 9. IonAuth User Management
+10. Select2 
