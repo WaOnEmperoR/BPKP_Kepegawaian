@@ -12,7 +12,6 @@
 			<div class="panel panel-midnightblue">
 				<div class="panel-heading">
 					<h4>Form - <?php echo $judul_halaman; ?></h4>
-					<h5><?php echo $this->uri->segment(2);?></h5>
 				</div>
 				<div class="panel-body collapse in">
 					<?php if ($this->uri->segment(2) == 'edit_user'){?>

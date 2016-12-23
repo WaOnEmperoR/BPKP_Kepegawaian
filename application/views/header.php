@@ -19,14 +19,12 @@
                 <li class="userlinks">
                     <ul class="dropdown-menu">
                         <li>
-                            <?php if($this->session->userdata('id_level')=='01') { ?>
-                                <a href="<?php echo base_url(); ?>pengguna/edit/<?php echo $this->app_model->CariUserPengguna();?>">Edit Profile <i class="pull-right fa fa-pencil"></i></a>
+                            <?php if($this->ion_auth->is_admin()) { ?>
+                                <a href="<?php echo base_url(); ?>users_man">Manajemen User <i class="pull-right fa fa-pencil"></i></a>
                             <?php } else { ?>
-                                <a href="<?php echo base_url(); ?>pengguna/edit_profile/<?php echo $this->app_model->CariUserPengguna();?>">Edit Profile <i class="pull-right fa fa-pencil"></i></a>
+                                <a href="<?php echo base_url(); ?>users_man/edit_user/<?php echo $this->ion_auth->user()->row()->id;?>">Edit Profile <i class="pull-right fa fa-pencil"></i></a>
                             <?php } ?>
                         </li>
-                        <!--<li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
-                        <li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>-->
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url('login/logout'); ?>" class="text-right">Sign Out</a></li>
                     </ul>

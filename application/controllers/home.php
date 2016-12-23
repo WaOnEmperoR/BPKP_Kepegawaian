@@ -24,10 +24,7 @@
 		{
 			// Load the tables library
 			$this->load->library('table');
-			
-			//$cek = $this->session->userdata('logged_in');
-		
-			//if(!empty($cek)){
+
 			if ($this->ion_auth->logged_in())
 			{	
 				$pelayanan = $this->mitensilan_dashboard_model->Get_Pelayanan_Yearly()->result();

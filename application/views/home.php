@@ -29,6 +29,14 @@
         {
             echo $this->load->view('sidebar');
         }
+        elseif ($this->ion_auth->in_group(3))
+        {
+            echo $this->load->view('sidebar_hrd');
+        }
+        elseif ($this->ion_auth->in_group(2))
+        {
+            echo $this->load->view('sidebar_member');
+        }
     ?>
 
     <?php echo $content; ?>
