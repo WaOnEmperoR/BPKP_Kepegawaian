@@ -1,5 +1,4 @@
 # BPKP_Kepegawaian
-Proyek Diklat PIM III, Bambang Puji Hartono, Ak., di Badan Pengawasan Keuangan dan Pembangunan (BPKP) Perwakilan Provinsi Maluku. Website ini dikembangkan oleh putra pertamanya, Rachmawan Atmaji Perdana, S.Kom.
 
 Features :
 1. Datatables with column filter
@@ -11,3 +10,4 @@ Features :
 7. MorrisJS for Graph
 8. Bootstrap Carousel
 9. IonAuth User Management
+10. Select2 
