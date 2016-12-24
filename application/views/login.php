@@ -74,10 +74,6 @@
                         </div>
                     </div>
                 </div>
-                <!--div class="clearfix">
-                    <div class="pull-right"><label><input type="checkbox" style="margin-bottom: 20px" checked=""> Remember Me</label></div>
-                </div-->
-
         </div>
         <div class="panel-footer">
 
@@ -91,7 +87,7 @@
         <!-- <?php echo form_close();?> -->
     </div>
 </div>
-<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js'></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("#reset").click(function(){

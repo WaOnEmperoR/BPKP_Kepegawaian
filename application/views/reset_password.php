@@ -46,9 +46,6 @@
             <h1><?php echo lang('reset_password_heading');?></h1>
             <p><?php //echo sprintf(lang('reset_password_subheading'), $identity_label);?></p>
 
-
-
-
             <?php echo form_open('login/reset_password/' . $code);?>
             <?php echo form_input($user_id);?>
             <?php echo form_hidden($csrf); ?>
@@ -83,9 +80,6 @@
                         </div>
                     </div>
                 </div>
-                <!--div class="clearfix">
-                    <div class="pull-right"><label><input type="checkbox" style="margin-bottom: 20px" checked=""> Remember Me</label></div>
-                </div-->
 
         </div>
         <div class="panel-footer">
