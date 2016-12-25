@@ -16,7 +16,6 @@
 
 			$this->lang->load('auth');
 
-			$this->load->model('m_dashboard_populate');
 			$this->load->model('mitensilan_dashboard_model');
 		}
 		
