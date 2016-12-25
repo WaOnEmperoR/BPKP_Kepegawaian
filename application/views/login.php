@@ -76,7 +76,9 @@
                 </div>
         </div>
         <div class="panel-footer">
-
+            <div class="pull-left">
+                <a id="registration" class="btn btn-info" href="login/registration">Registration</a>
+            </div>
             <div class="pull-right">
                 <a id="reset" class="btn btn-default">Reset</a>
                 <?php echo form_button($submit,'Login');?>

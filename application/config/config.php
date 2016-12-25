@@ -360,10 +360,10 @@ $config['proxy_ips'] = '';
 
 /** config **/
 
-$config['nama_aplikasi'] = 'BPKP';
+$config['nama_aplikasi'] = 'Mitensilan';
 
 $config['prg'] = 'D2IN';
-$config['web_prg'] = 'govca.id';
+$config['web_prg'] = 'bpkp.go.id';
 $config['limit_data']=10;
 /* End of file config.php */
 /* Location: ./application/config/config.php */
