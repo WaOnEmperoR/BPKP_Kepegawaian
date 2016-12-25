@@ -336,6 +336,32 @@ class Login extends CI_Controller
         }
     }
     
+    // activate the user
+	public function activate($id, $code=false)
+	{
+		if ($code !== false)
+		{
+			$activation = $this->ion_auth->activate($id, $code);
+		}
+		else if ($this->ion_auth->is_admin())
+		{
+			$activation = $this->ion_auth->activate($id);
+		}
+
+		if ($activation)
+		{
+			// redirect them to the auth page
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			redirect("login", 'refresh');
+		}
+		else
+		{
+			// redirect them to the forgot password page
+			$this->session->set_flashdata('message', $this->ion_auth->errors());
+			redirect("login/forgot_password", 'refresh');
+		}
+	}
+
     public function reset_password($code = NULL)
     {
         if (!$code) {
